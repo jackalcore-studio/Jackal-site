@@ -1,0 +1,37 @@
+    13:28:23.128  ⛅️ wrangler 4.106.0
+    13:28:23.128 ────────────────────
+    13:28:23.166
+    13:28:23.254 ✘ [ERROR] Missing entry-point to Worker script or to assets directory
+    13:28:23.255
+    13:28:23.255   
+    13:28:23.255   If there is code to deploy, you can either:
+    13:28:23.255   - Specify an entry-point to your Worker script via the command line (ex: `npx wrangler versions upload src/index.ts`)
+    13:28:23.255   - Or create a "wrangler.jsonc" file containing:
+    13:28:23.255   
+    13:28:23.255   ```
+    13:28:23.256   {
+    13:28:23.256     "name": "worker-name",
+    13:28:23.256     "compatibility_date": "2026-06-30",
+    13:28:23.256     "main": "src/index.ts"
+    13:28:23.257   }
+    13:28:23.258   ```
+    13:28:23.258   
+    13:28:23.258   
+    13:28:23.258   If are uploading a directory of assets, you can either:
+    13:28:23.259   - Specify the path to the directory of assets via the command line: (ex: `npx wrangler versions upload --assets=./dist`)
+    13:28:23.260   - Or create a "wrangler.jsonc" file containing:
+    13:28:23.260   
+    13:28:23.261   ```
+    13:28:23.261   {
+    13:28:23.261     "name": "worker-name",
+    13:28:23.261     "compatibility_date": "2026-06-30",
+    13:28:23.262     "assets": {
+    13:28:23.262       "directory": "./dist"
+    13:28:23.262     }
+    13:28:23.262   }
+    13:28:23.262   ```
+    13:28:23.262   
+    13:28:23.263
+    13:28:23.263
+    13:28:23.394 🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2026-06-30_20-28-22_535.log"
+    13:28:23.610 Failed: error occurred while running deploy command
