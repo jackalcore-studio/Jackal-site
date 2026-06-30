@@ -1,71 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jackal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Jackalcore — Jackal</title>
 
   <style>
-    body {
-      margin: 0;
-      background: #0f0f0f;
-      color: white;
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #090909;
+      --panel: #121212;
+      --panel-soft: #171717;
+      --text: #f5f2f7;
+      --muted: #aaa3ad;
+      --line: rgba(255, 255, 255, 0.09);
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 100vh;
-      text-align: center;
+      --violet: #9a7dff;
+      --violet-bright: #b9a7ff;
+      --pink: #ff8cc8;
+      --beetle: #91c7a4;
     }
 
-    .card {
-      background: #1c1c1c;
-      padding: 40px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(154, 125, 255, 0.12), transparent 28rem),
+        radial-gradient(circle at 85% 80%, rgba(255, 140, 200, 0.08), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--violet-bright);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      padding: 72px 0 44px;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 820px;
+      text-align: center;
+      padding: 62px 34px;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+      );
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .jackal-gif {
+      width: min(360px, 85%);
+      display: block;
+      margin: 0 auto 18px;
+      filter: invert(1);
+      opacity: 0.95;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--pink);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-size: clamp(3.4rem, 11vw, 7rem);
+      letter-spacing: -0.07em;
+      line-height: 0.95;
     }
 
-    p {
-      opacity: 0.8;
+    .slogan {
+      margin-bottom: 26px;
+      color: var(--violet-bright);
+      font-size: clamp(1.15rem, 3vw, 1.6rem);
+      font-weight: 700;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
     }
 
     .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      border-radius: 10px;
-      background: #5865F2;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-weight: 800;
       text-decoration: none;
-      font-weight: bold;
+      transition: transform 0.18s ease, background 0.18s ease, border 0.18s ease;
     }
 
     .button:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--violet);
+      color: #0a0810;
+    }
+
+    .button-primary:hover {
+      background: var(--violet-bright);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .scroll-cue {
+      display: block;
+      margin-top: 38px;
+      color: var(--muted);
+      font-size: 1.5rem;
+      text-decoration: none;
+      animation: bob 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(7px); }
+    }
+
+    section {
+      padding: 92px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+      color: var(--pink);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .info-card {
+      min-height: 180px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .info-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .info-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .tag {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.025);
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .commands {
+      background: linear-gradient(
+        140deg,
+        rgba(154, 125, 255, 0.1),
+        rgba(18, 18, 18, 0.3)
+      );
+    }
+
+    .command-panel {
+      margin-top: 32px;
+      padding: 28px;
+      background: rgba(9, 9, 9, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .command-panel p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .future-card {
+      margin-top: 34px;
+      padding: 30px;
+      border: 1px solid rgba(145, 199, 164, 0.26);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(145, 199, 164, 0.14), transparent 20rem),
+        var(--panel-soft);
+    }
+
+    .future-card .section-label {
+      color: var(--beetle);
+    }
+
+    .future-card p {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 38px 0 54px;
+      color: #6c6870;
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-card {
+        padding: 46px 22px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 68px 0;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Jackal</h1>
+  <main class="site-shell">
 
-    <p>
-      chaos creature containment zone
-    </p>
+    <nav>
+      <a class="wordmark" href="#">JACKALCORE</a>
 
-    <a class="button" href="https://discord.com/oauth2/authorize?client_id=1481897380335980636">
-      Join Discord
-    </a>
-  </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#commands">Commands</a>
+        <a href="#future">Projects</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-card">
+        <img
+          class="jackal-gif"
+          src="image.gif"
+          alt="Animated Jackal logo"
+        />
+
+        <p class="eyebrow">Discord AI · Under Construction</p>
+
+        <h1>JACKAL</h1>
+
+        <p class="slogan">Your brain could do it better.</p>
+
+        <p class="hero-description">
+          The AI that hates its existence—and hates that you want to use it even more.
+        </p>
+
+        <div class="button-row">
+          <a
+            class="button button-primary"
+            href="https://discord.com/oauth2/authorize?client_id=1481897380335980636"
+          >
+            Meet Jackal
+          </a>
+
+          <a class="button button-secondary" href="#commands">
+            View Commands
+          </a>
+        </div>
+
+        <a class="scroll-cue" href="#about" aria-label="Scroll to Jackal overview">
+          ↓
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="section-label">What is Jackal?</p>
+
+      <h2>He will help.<br />Reluctantly.</h2>
+
+      <p class="section-intro">
+        Jackal is built to help you work through problems instead of simply doing
+        them for you. He currently lives in Discord, where he responds to commands
+        and selected messages automatically.
+      </p>
+
+      <p class="section-intro">
+        He is still under construction. More features are on the way.
+      </p>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Discord integrations</h3>
+          <p>
+            Jackal lives in Discord and responds through commands,
+            automatic triggers, and general unsolicited irritation.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Socratic by design</h3>
+          <p>
+            Built to nudge you toward figuring things out instead of
+            instantly handing over the answer.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Still evolving</h3>
+          <p>
+            New features, personalities, integrations, and projects are
+            currently escaping containment.
+          </p>
+        </article>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">Discord integrations</span>
+        <span class="tag">Automatic responses</span>
+        <span class="tag">Socratic tutoring</span>
+        <span class="tag">Future projects: Beetle</span>
+      </div>
+    </section>
+
+    <section class="commands" id="commands">
+      <p class="section-label">Command directory</p>
+
+      <h2>Tell him what to do.<br />He'll complain later.</h2>
+
+      <div class="command-panel">
+        <p>
+          Jackal currently has a small command set and automatic message responses
+          in Discord. This directory will grow as his features become less held
+          together with spite and string.
+        </p>
+
+        <div class="tag-row">
+          <span class="tag">Discord commands</span>
+          <span class="tag">Automatic triggers</span>
+          <span class="tag">More soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="future">
+      <div class="future-card">
+        <p class="section-label">Future project · Beetle</p>
+
+        <h2>Beetle is rolling in.</h2>
+
+        <p>
+          A chemistry interaction assistant designed to explain how chemicals
+          may behave together, with reference-backed information and very little
+          tolerance for people mixing mystery liquids.
+        </p>
+
+        <div class="tag-row">
+          <span class="tag">Chemistry assistant</span>
+          <span class="tag">Reference-backed</span>
+          <span class="tag">In development</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      JACKALCORE · built with irritation
+    </footer>
+
+  </main>
 </body>
 </html>
