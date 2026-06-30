@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,12 +8,12 @@
 
   <style>
     :root {
-      --bg: #090909;
-      --panel: #121212;
+      --bg: #000000;
+      --panel: #111111;
       --panel-soft: #171717;
       --text: #f5f2f7;
       --muted: #aaa3ad;
-      --line: rgba(255, 255, 255, 0.09);
+      --line: rgba(255, 255, 255, 0.1);
 
       --violet: #9a7dff;
       --violet-bright: #b9a7ff;
@@ -31,10 +31,7 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(154, 125, 255, 0.12), transparent 28rem),
-        radial-gradient(circle at 85% 80%, rgba(255, 140, 200, 0.08), transparent 30rem),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -93,23 +90,11 @@
       width: 100%;
       max-width: 820px;
       text-align: center;
-      padding: 62px 34px;
-      background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.055),
-        rgba(255, 255, 255, 0.018)
-      );
+      padding: 72px 34px;
+      background: #0b0b0b;
       border: 1px solid var(--line);
       border-radius: 28px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-    }
-
-    .jackal-gif {
-      width: min(360px, 85%);
-      display: block;
-      margin: 0 auto 18px;
-      filter: invert(1);
-      opacity: 0.95;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
     }
 
     .eyebrow {
@@ -277,22 +262,18 @@
     }
 
     .commands {
-      background: linear-gradient(
-        140deg,
-        rgba(154, 125, 255, 0.1),
-        rgba(18, 18, 18, 0.3)
-      );
+      background: #050505;
     }
 
     .command-panel {
       margin-top: 32px;
       padding: 28px;
-      background: rgba(9, 9, 9, 0.55);
+      background: #101010;
       border: 1px solid var(--line);
       border-radius: 18px;
     }
 
-    .command-panel p {
+    .command-panel > p {
       color: var(--muted);
       margin-bottom: 0;
     }
@@ -302,9 +283,7 @@
       padding: 30px;
       border: 1px solid rgba(145, 199, 164, 0.26);
       border-radius: 20px;
-      background:
-        radial-gradient(circle at 90% 10%, rgba(145, 199, 164, 0.14), transparent 20rem),
-        var(--panel-soft);
+      background: #111513;
     }
 
     .future-card .section-label {
@@ -364,12 +343,6 @@
 
     <section class="hero">
       <div class="hero-card">
-        <img
-          class="jackal-gif"
-          src="image.gif"
-          alt="Animated Jackal logo"
-        />
-
         <p class="eyebrow">Discord AI · Under Construction</p>
 
         <h1>JACKAL</h1>
@@ -454,43 +427,43 @@
       <h2>Tell him what to do.<br />He'll complain later.</h2>
 
       <div class="command-panel">
-  <p>
-    Jackal does not need a complicated command menu. He is listening already,
-    which is arguably worse.
-  </p>
+        <p>
+          Jackal does not need a complicated command menu. He is listening already,
+          which is arguably worse.
+        </p>
 
-  <div class="info-grid">
-    <article class="info-card">
-      <h3>AI citation trigger</h3>
-      <p>
-        Mention ChatGPT, Gemini, or Claude as proof of something and Jackal may
-        respond. He does not consider another chatbot a source. Shocking.
-      </p>
-    </article>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>AI citation trigger</h3>
+            <p>
+              Mention ChatGPT, Gemini, or Claude as proof of something and Jackal may
+              respond. He does not consider another chatbot a source. Shocking.
+            </p>
+          </article>
 
-    <article class="info-card">
-      <h3>Ask Jackal directly</h3>
-      <p>
-        Start a message with <strong>Jackal</strong>, <strong>jackal</strong>,
-        or mention <strong>@Jackal</strong> to get his attention.
-      </p>
-    </article>
+          <article class="info-card">
+            <h3>Ask Jackal directly</h3>
+            <p>
+              Start a message with <strong>Jackal</strong>, <strong>jackal</strong>,
+              or mention <strong>@Jackal</strong> to get his attention.
+            </p>
+          </article>
 
-    <article class="info-card">
-      <h3>Passive responses</h3>
-      <p>
-        Jackal occasionally responds to random messages on his own, because
-        apparently a silent bot was not unsettling enough.
-      </p>
-    </article>
-  </div>
+          <article class="info-card">
+            <h3>Passive responses</h3>
+            <p>
+              Jackal occasionally responds to random messages on his own, because
+              apparently a silent bot was not unsettling enough.
+            </p>
+          </article>
+        </div>
 
-  <div class="tag-row">
-    <span class="tag">ChatGPT / Gemini / Claude triggers</span>
-    <span class="tag">Direct mentions</span>
-    <span class="tag">Passive interjections</span>
-  </div>
-</div>
+        <div class="tag-row">
+          <span class="tag">ChatGPT / Gemini / Claude triggers</span>
+          <span class="tag">Direct mentions</span>
+          <span class="tag">Passive interjections</span>
+        </div>
+      </div>
     </section>
 
     <section id="future">
