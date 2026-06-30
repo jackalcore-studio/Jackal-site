@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Jackalcore — Chat</title>
+
+  <style>
+    :root {
+      --bg: #000000;
+      --panel: #0c0c0c;
+      --panel-soft: #141414;
+      --text: #f5f2f7;
+      --muted: #938d98;
+      --line: rgba(255, 255, 255, 0.12);
+      --violet: #9a7dff;
+      --violet-bright: #b9a7ff;
+      --pink: #ff8cc8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: min(820px, calc(100% - 32px));
+      min-height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      color: var(--violet-bright);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0 44px;
+    }
+
+    .intro {
+      margin-bottom: 54px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--violet-bright);
+      font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+      font-weight: 700;
+    }
+
+    .chat-box {
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+
+    .messages {
+      min-height: 260px;
+      max-height: 440px;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .message {
+      max-width: 84%;
+      margin-bottom: 16px;
+      padding: 13px 15px;
+      border-radius: 15px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .jackal-message {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-top-left-radius: 4px;
+    }
+
+    .user-message {
+      margin-left: auto;
+      background: var(--violet);
+      color: #0a0810;
+      border-top-right-radius: 4px;
+      font-weight: 600;
+    }
+
+    .sender {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--pink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .user-message .sender {
+      color: #29203e;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      padding: 16px;
+      border-top: 1px solid var(--line);
+      background: #080808;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 14px 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #111111;
+      color: var(--text);
+      font: inherit;
+    }
+
+    input::placeholder {
+      color: #716b73;
+    }
+
+    input:focus {
+      outline: 1px solid var(--violet);
+      border-color: var(--violet);
+    }
+
+    button {
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--violet);
+      color: #0a0810;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      background: var(--violet-bright);
+    }
+
+    button:disabled,
+    input:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .counter {
+      min-height: 45px;
+      padding: 15px 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .counter.warning {
+      color: var(--pink);
+    }
+
+    .footer {
+      padding: 28px 0 38px;
+      color: #67616a;
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .chat-area {
+        padding-top: 56px;
+      }
+
+      form {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .message {
+        max-width: 92%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <nav>
+      <a class="wordmark" href="index.html">JACKALCORE</a>
+      <a class="back-link" href="index.html">← Back to containment</a>
+    </nav>
+
+    <section class="chat-area">
+      <div class="intro">
+        <h1>Jackal</h1>
+        <p class="subtitle">What do you need me for now?</p>
+      </div>
+
+      <section class="chat-box">
+        <div class="messages" id="messages">
+          <div class="message jackal-message">
+            <span class="sender">Jackal</span>
+            Finish the thought.
+          </div>
+        </div>
+
+        <form id="chat-form">
+          <input
+            id="message-input"
+            type="text"
+            placeholder="Start typing..."
+            autocomplete="off"
+            maxlength="1000"
+          />
+          <button id="send-button" type="submit">Send</button>
+        </form>
+
+        <div class="counter" id="counter">
+          10 messages until Jackal needs a nap.
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      Jackal is currently being supervised.
+    </footer>
+  </main>
+
+  <script>
+    const MAX_MESSAGES = 10;
+
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("message-input");
+    const messages = document.getElementById("messages");
+    const counter = document.getElementById("counter");
+    const sendButton = document.getElementById("send-button");
+
+    let messageCount = Number(localStorage.getItem("jackalMessageCount")) || 0;
+
+    function addMessage(text, sender, className) {
+      const message = document.createElement("div");
+      message.className = `message ${className}`;
+
+      const senderLabel = document.createElement("span");
+      senderLabel.className = "sender";
+      senderLabel.textContent = sender;
+
+      message.appendChild(senderLabel);
+      message.appendChild(document.createTextNode(text));
+
+      messages.appendChild(message);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getNapMessage(remaining) {
+      if (remaining <= 0) {
+        return "Jackal needs a nap. Come back later.";
+      }
+
+      if (remaining === 1) {
+        return "One message until Jackal needs a nap.";
+      }
+
+      if (remaining <= 3) {
+        return `${remaining} messages until Jackal needs a nap. Use them wisely.`;
+      }
+
+      if (remaining <= 5) {
+        return `${remaining} messages until Jackal needs a nap. He is already regretting this.`;
+      }
+
+      return `${remaining} messages until Jackal needs a nap.`;
+    }
+
+    function updateCounter() {
+      const remaining = MAX_MESSAGES - messageCount;
+
+      counter.textContent = getNapMessage(remaining);
+      counter.classList.toggle("warning", remaining <= 3);
+
+      if (remaining <= 0) {
+        input.disabled = true;
+        sendButton.disabled = true;
+        input.placeholder = "Jackal is unavailable.";
+      }
+    }
+
+    function temporaryJackalReply() {
+      const replies = [
+        "The chat page works. His actual brain is still being wired in.",
+        "That message has been received by the decorative front end. Congratulations.",
+        "I would answer properly, but the backend is still under construction.",
+        "The interface lives. The intelligence is currently elsewhere."
+      ];
+
+      return replies[Math.floor(Math.random() * replies.length)];
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const text = input.value.trim();
+
+      if (!text || messageCount >= MAX_MESSAGES) {
+        return;
+      }
+
+      addMessage(text, "You", "user-message");
+
+      input.value = "";
+      messageCount += 1;
+      localStorage.setItem("jackalMessageCount", messageCount);
+
+      updateCounter();
+
+      setTimeout(() => {
+        addMessage(
+          temporaryJackalReply(),
+          "Jackal",
+          "jackal-message"
+        );
+
+        if (messageCount >= MAX_MESSAGES) {
+          addMessage(
+            "That is enough. Go think independently for a while.",
+            "Jackal",
+            "jackal-message"
+          );
+        }
+      }, 450);
+    });
+
+    updateCounter();
+  </script>
+</body>
+</html>
