@@ -533,59 +533,75 @@
     </section>
 
     <section id="future">
-      <div class="future-card">
-        <p class="section-label">Future project · Beetle</p>
+  <div class="future-card">
+    <p class="section-label">Future project · Beetle</p>
 
-        <h2>Beetle is rolling in.</h2>
+    <h2>Beetle is rolling in.</h2>
 
-        <p>
-          A chemistry-focused AI built to help you understand what substances are,
-          how they may interact, and when missing conditions actually matter.
-          Reference-backed. Hazard-aware. Still under construction.
-        </p>
+    <p>
+      A chemistry-focused AI built to help you understand what substances are,
+      how they may interact, and when missing conditions actually matter.
+      Reference-backed. Hazard-aware. Still under construction.
+    </p>
 
-        <div class="tag-row">
-          <span class="tag">Chemistry assistant</span>
-          <span class="tag">Reference-backed</span>
-          <span class="tag">In development</span>
+    <div class="tag-row">
+      <span class="tag">Chemistry assistant</span>
+      <span class="tag">Reference-backed</span>
+      <span class="tag">In development</span>
+    </div>
+  </div>
+.preview-section {
+  margin-top: 42px;
+  padding: 30px;
+  background: #0b0b0b;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.preview-section .section-label {
+  color: var(--pink);
+}
+  <div class="preview-section">
+    <p class="section-label">How they respond</p>
+
+    <h2>Same question box. Very different creatures.</h2>
+
+    <div class="preview-grid">
+      <article class="preview-chat">
+        <div class="preview-header">
+          <span class="preview-dot beetle-dot"></span>
+          BEETLE
         </div>
 
-        <div class="preview-grid">
-          <article class="preview-chat">
-            <div class="preview-header">
-              <span class="preview-dot beetle-dot"></span>
-              BEETLE
-            </div>
-
-            <div class="preview-message preview-user">
-              How does fluoride interact with water?
-            </div>
-
-            <div class="preview-message preview-bot">
-              Assuming you mean fluoride ions: they react weakly with water to form
-              a small amount of hydroxide and hydrogen fluoride. A typical fluoride
-              salt solution is usually mildly basic, not dramatically reactive.
-            </div>
-          </article>
-
-          <article class="preview-chat">
-            <div class="preview-header">
-              <span class="preview-dot jackal-dot"></span>
-              JACKAL
-            </div>
-
-            <div class="preview-message preview-user">
-              Solve f(x) = 3x⁴ - 5x² + 7 for me.
-            </div>
-
-            <div class="preview-message preview-bot">
-              You're kidding, right? How about you use your own brain to solve it,
-              and we'll go from there.
-            </div>
-          </article>
+        <div class="preview-message preview-user">
+          How does fluoride interact with water?
         </div>
-      </div>
-    </section>
+
+        <div class="preview-message preview-bot">
+          Assuming you mean fluoride ions: they react weakly with water to form
+          a small amount of hydroxide and hydrogen fluoride. A typical fluoride
+          salt solution is usually mildly basic, not dramatically reactive.
+        </div>
+      </article>
+
+      <article class="preview-chat">
+        <div class="preview-header">
+          <span class="preview-dot jackal-dot"></span>
+          JACKAL
+        </div>
+
+        <div class="preview-message preview-user">
+          Solve f(x) = 3x⁴ - 5x² + 7 for me.
+        </div>
+
+        <div class="preview-message preview-bot">
+          You're kidding, right? How about you use your own brain to solve it,
+          and we'll go from there.
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
     <footer>
       JACKALCORE · built with irritation · Beetle pending
