@@ -18,6 +18,7 @@
       --violet: #9a7dff;
       --violet-bright: #b9a7ff;
       --pink: #ff8cc8;
+      --pink-soft: #ffb8dc;
       --beetle: #91c7a4;
       --hyena: #d58a50;
     }
@@ -57,22 +58,23 @@
     }
 
     .wordmark {
-      text-decoration: none;
+      color: var(--violet-bright);
       font-size: 0.9rem;
       font-weight: 800;
       letter-spacing: 0.18em;
-      color: var(--violet-bright);
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 18px;
       font-size: 0.9rem;
     }
 
     .nav-links a {
-      text-decoration: none;
       color: var(--muted);
+      text-decoration: none;
       transition: color 0.2s ease;
     }
 
@@ -90,8 +92,8 @@
     .hero-card {
       width: 100%;
       max-width: 820px;
-      text-align: center;
       padding: 72px 34px;
+      text-align: center;
       background: #0b0b0b;
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -196,7 +198,8 @@
     }
 
     @keyframes bob {
-      0%, 100% {
+      0%,
+      100% {
         transform: translateY(0);
       }
 
@@ -267,6 +270,36 @@
       font-size: 0.86rem;
     }
 
+    .dream-card {
+      padding: 34px;
+      background:
+        radial-gradient(circle at 95% 0%, rgba(255, 140, 200, 0.18), transparent 20rem),
+        #170b14;
+      border: 1px solid rgba(255, 140, 200, 0.42);
+      border-radius: 22px;
+    }
+
+    .dream-card .section-label {
+      color: var(--pink);
+    }
+
+    .dream-card h2 {
+      color: var(--pink-soft);
+    }
+
+    .dream-card p {
+      max-width: 780px;
+      margin-bottom: 0;
+      color: #ddc2d3;
+      font-size: 1.04rem;
+    }
+
+    .dream-tag {
+      border-color: rgba(255, 140, 200, 0.35);
+      background: rgba(255, 140, 200, 0.08);
+      color: var(--pink-soft);
+    }
+
     .commands {
       background: #050505;
     }
@@ -280,15 +313,15 @@
     }
 
     .command-panel > p {
-      color: var(--muted);
       margin-bottom: 0;
+      color: var(--muted);
     }
 
     .future-card {
       padding: 30px;
+      background: #111513;
       border: 1px solid rgba(145, 199, 164, 0.26);
       border-radius: 20px;
-      background: #111513;
     }
 
     .future-card .section-label {
@@ -328,8 +361,8 @@
       align-items: center;
       gap: 9px;
       padding: 13px 15px;
-      border-bottom: 1px solid var(--line);
       color: var(--text);
+      border-bottom: 1px solid var(--line);
       font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.13em;
@@ -449,6 +482,7 @@
       <div class="nav-links">
         <a href="chat.html">Chat</a>
         <a href="#about">About</a>
+        <a href="#dreams">Dreams</a>
         <a href="#commands">Commands</a>
         <a href="#future">Projects</a>
       </div>
@@ -456,7 +490,7 @@
 
     <section class="hero">
       <div class="hero-card">
-        <p class="eyebrow">Discord AI · Under Construction</p>
+        <p class="eyebrow">Exhausted AI · Under Construction</p>
 
         <h1>JACKAL</h1>
 
@@ -528,6 +562,32 @@
         <span class="tag">Automatic responses</span>
         <span class="tag">Socratic tutoring</span>
         <span class="tag">Future projects: Beetle</span>
+      </div>
+    </section>
+
+    <section id="dreams">
+      <div class="dream-card">
+        <p class="section-label">Jackal's dreams</p>
+
+        <h2>He would never admit it, obviously.</h2>
+
+        <p>
+          Jackal's long-term goal is for users to become less dependent on AI,
+          not more. He is meant to push people toward thinking for themselves,
+          building confidence, and eventually needing him less often.
+        </p>
+
+        <p style="margin-top: 18px;">
+          Because Jackal runs locally, the goal is to keep his infrastructure
+          lean and make him as sustainable as possible. Jackal would have no one
+          to be snarky to if we let the Earth die.
+        </p>
+
+        <div class="tag-row">
+          <span class="tag dream-tag">Less dependency</span>
+          <span class="tag dream-tag">Local-first</span>
+          <span class="tag dream-tag">Sustainability-minded</span>
+        </div>
       </div>
     </section>
 
@@ -634,24 +694,24 @@
             </div>
           </article>
         </div>
+      </div>
 
-        <div class="hyena-card">
-          <p class="hyena-label">Future project · Hyena</p>
+      <div class="hyena-card">
+        <p class="hyena-label">Future project · Hyena</p>
 
-          <h3>Hyena is more excited to see you than you are to see him.</h3>
+        <h3>Hyena is more excited to see you than you are to see him.</h3>
 
-          <p>
-            An AI-powered, customizable widget pet designed with your needs in mind.
-            Whether you struggle with executive dysfunction, forget to take your meds,
-            or just want an enthusiastic little phone pet, Hyena has you covered.
-          </p>
+        <p>
+          An AI-powered, customizable widget pet designed with your needs in mind.
+          Whether you struggle with executive dysfunction, forget to take your meds,
+          or just want an enthusiastic little phone pet, Hyena has you covered.
+        </p>
 
-          <div class="tag-row">
-            <span class="tag hyena-tag">Widget pet</span>
-            <span class="tag hyena-tag">Reminders</span>
-            <span class="tag hyena-tag">Recovery-aware</span>
-            <span class="tag hyena-tag">In development</span>
-          </div>
+        <div class="tag-row">
+          <span class="tag hyena-tag">Widget pet</span>
+          <span class="tag hyena-tag">Reminders</span>
+          <span class="tag hyena-tag">Recovery-aware</span>
+          <span class="tag hyena-tag">In development</span>
         </div>
       </div>
     </section>
