@@ -11,15 +11,10 @@
 
     :root {
       --page: #24130f;
-      --page-shadow: #140a08;
       --den: #372018;
-      --den-dark: #1a0d0a;
       --ledger: #21120e;
-      --wood: #4a291e;
       --wine: #6e3028;
-      --wine-soft: #8f4739;
       --gold: #d5aa58;
-      --gold-dim: #a67b36;
       --cream: #f4e5d2;
       --muted: #c8af96;
       --line: rgba(213, 170, 88, 0.28);
@@ -431,6 +426,8 @@
 
   <script>
     const MAX_MESSAGES = 10;
+    const NAP_DURATION_MS = 24 * 60 * 60 * 1000;
+    const API_URL = "https://api.jackalcore.club/api/chat";
 
     const form = document.getElementById("chat-form");
     const input = document.getElementById("message-input");
@@ -439,6 +436,9 @@
     const sendButton = document.getElementById("send-button");
 
     let messageCount = Number(localStorage.getItem("jackalMessageCount")) || 0;
+    let napUntil = Number(localStorage.getItem("jackalNapUntil")) || 0;
+    let sessionId = localStorage.getItem("jackalSessionId") || "";
+    let isWaitingForJackal = false;
 
     function addMessage(text, sender, className) {
       const message = document.createElement("div");
@@ -448,16 +448,53 @@
       senderLabel.className = "sender";
       senderLabel.textContent = sender;
 
+      const messageText = document.createElement("span");
+      messageText.textContent = text;
+
       message.appendChild(senderLabel);
-      message.appendChild(document.createTextNode(text));
+      message.appendChild(messageText);
 
       messages.appendChild(message);
       messages.scrollTop = messages.scrollHeight;
+
+      return messageText;
+    }
+
+    function clearNapAndStartFresh() {
+      messageCount = 0;
+      napUntil = 0;
+      sessionId = "";
+
+      localStorage.removeItem("jackalMessageCount");
+      localStorage.removeItem("jackalNapUntil");
+      localStorage.removeItem("jackalSessionId");
+    }
+
+    function napTimeRemaining() {
+      return Math.max(0, napUntil - Date.now());
+    }
+
+    function formatTimeRemaining(milliseconds) {
+      const totalMinutes = Math.ceil(milliseconds / 60000);
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+
+      if (hours <= 0) {
+        return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+      }
+
+      if (minutes === 0) {
+        return `${hours} hour${hours === 1 ? "" : "s"}`;
+      }
+
+      return `${hours}h ${minutes}m`;
     }
 
     function getNapMessage(remaining) {
-      if (remaining <= 0) {
-        return "Jackal needs a nap. Come back later.";
+      const timeLeft = napTimeRemaining();
+
+      if (timeLeft > 0) {
+        return `Jackal needs a nap. The den reopens in ${formatTimeRemaining(timeLeft)}.`;
       }
 
       if (remaining === 1) {
@@ -476,64 +513,126 @@
     }
 
     function updateCounter() {
+      if (napUntil && Date.now() >= napUntil) {
+        clearNapAndStartFresh();
+      }
+
+      const timeLeft = napTimeRemaining();
       const remaining = MAX_MESSAGES - messageCount;
 
       counter.textContent = getNapMessage(remaining);
-      counter.classList.toggle("warning", remaining <= 3);
+      counter.classList.toggle("warning", timeLeft > 0 || remaining <= 3);
 
-      if (remaining <= 0) {
+      const napActive = timeLeft > 0;
+      const closed = napActive || messageCount >= MAX_MESSAGES;
+
+      if (closed) {
         input.disabled = true;
         sendButton.disabled = true;
-        input.placeholder = "The den is closed.";
+        input.placeholder = napActive
+          ? "Jackal is asleep."
+          : "Jackal is unavailable.";
+      } else if (!isWaitingForJackal) {
+        input.disabled = false;
+        sendButton.disabled = false;
+        input.placeholder = "Ask something coherent.";
+        sendButton.textContent = "Send";
       }
     }
 
-    function temporaryJackalReply() {
-      const replies = [
-        "The den is open. The actual brain is still being attached.",
-        "That reached the decorative front end. Try not to celebrate too early.",
-        "I would answer properly, but the plumbing is still being assembled.",
-        "The room is ready. The creature is still getting wired in."
-      ];
+    function setWaitingState(waiting) {
+      isWaitingForJackal = waiting;
 
-      return replies[Math.floor(Math.random() * replies.length)];
+      if (napTimeRemaining() > 0 || messageCount >= MAX_MESSAGES) {
+        updateCounter();
+        return;
+      }
+
+      input.disabled = waiting;
+      sendButton.disabled = waiting;
+      sendButton.textContent = waiting ? "Thinking..." : "Send";
     }
 
-    form.addEventListener("submit", (event) => {
+    async function askJackal(text) {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: text,
+          session_id: sessionId
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || "The den has a plumbing problem."
+        );
+      }
+
+      if (data.session_id) {
+        sessionId = data.session_id;
+        localStorage.setItem("jackalSessionId", sessionId);
+      }
+
+      return data.reply;
+    }
+
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const text = input.value.trim();
 
-      if (!text || messageCount >= MAX_MESSAGES) {
+      if (
+        !text ||
+        messageCount >= MAX_MESSAGES ||
+        napTimeRemaining() > 0 ||
+        isWaitingForJackal
+      ) {
         return;
       }
 
       addMessage(text, "You", "user-message");
-
       input.value = "";
-      messageCount += 1;
-      localStorage.setItem("jackalMessageCount", messageCount);
+      setWaitingState(true);
 
-      updateCounter();
+      const replyText = addMessage(
+        "Jackal is deciding whether this deserves a response.",
+        "Jackal",
+        "jackal-message"
+      );
 
-      setTimeout(() => {
-        addMessage(
-          temporaryJackalReply(),
-          "Jackal",
-          "jackal-message"
-        );
+      try {
+        const reply = await askJackal(text);
+        replyText.textContent = reply;
+
+        messageCount += 1;
+        localStorage.setItem("jackalMessageCount", messageCount);
 
         if (messageCount >= MAX_MESSAGES) {
+          napUntil = Date.now() + NAP_DURATION_MS;
+          localStorage.setItem("jackalNapUntil", napUntil);
+
           addMessage(
             "That is enough. Go think independently for a while.",
             "Jackal",
             "jackal-message"
           );
         }
-      }, 450);
+      } catch (error) {
+        replyText.textContent = error.message;
+      } finally {
+        setWaitingState(false);
+        updateCounter();
+      }
     });
 
     updateCounter();
+
+    window.setInterval(updateCounter, 60 * 1000);
   </script>
 </body>
 </html>
