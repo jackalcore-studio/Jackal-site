@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-cute]
   <title>Jackal's Den — Jackalcore</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -41,372 +40,10 @@ cute]
     }
 
     @media(max-width:650px){.page{width:min(100% - 1rem,1120px)}nav{align-items:flex-start;padding:.8rem}.den-header{grid-template-columns:1fr}.status-plaque{justify-self:start}.den-side{justify-items:center}.sleepy-jackal-art{width:min(250px,78vw);margin-top:.3rem}.messages{min-height:330px;padding:.8rem}.message{max-width:92%}form{flex-direction:column}button{width:100%}}
-=======
-
-  <title>Jackal's Den — Jackalcore</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-    :root {
-      --page: #24130f;
-      --den: #372018;
-      --ledger: #21120e;
-      --wine: #6e3028;
-      --gold: #d5aa58;
-      --cream: #f4e5d2;
-      --muted: #c8af96;
-      --line: rgba(213, 170, 88, 0.28);
-      --line-soft: rgba(255, 240, 215, 0.10);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      color: var(--cream);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(126, 52, 38, 0.25), transparent 28rem),
-        radial-gradient(circle at 86% 80%, rgba(116, 68, 26, 0.20), transparent 26rem),
-        var(--page);
-      font-family: "Space Grotesk", system-ui, sans-serif;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.35;
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          transparent 0,
-          transparent 3px,
-          rgba(255,255,255,0.015) 4px
-        );
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      width: min(1120px, calc(100% - 2rem));
-      min-height: 100vh;
-      margin: 0 auto;
-      padding: 1.25rem 0 2.5rem;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 0.75rem;
-      background: rgba(25, 12, 9, 0.82);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
-    }
-
-    .wordmark {
-      color: var(--cream);
-      font-size: 0.83rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-    }
-
-    .wordmark::before {
-      content: "✦ ";
-      color: var(--gold);
-    }
-
-    .back-link {
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-
-    .back-link:hover {
-      color: var(--cream);
-    }
-
-    .den-shell {
-      margin-top: 1.25rem;
-      padding: clamp(1rem, 3vw, 2.25rem);
-      border: 1px solid rgba(213, 170, 88, 0.42);
-      border-radius: 1rem;
-      background:
-        linear-gradient(135deg, rgba(91, 40, 29, 0.35), transparent 38%),
-        var(--den);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.025),
-        0 24px 70px rgba(0,0,0,0.24);
-    }
-
-    .den-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 1.2rem;
-      align-items: end;
-      margin-bottom: 1.5rem;
-    }
-
-    .eyebrow {
-      margin: 0 0 0.55rem;
-      color: var(--gold);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(3.4rem, 9vw, 6.5rem);
-      line-height: 0.8;
-      letter-spacing: -0.07em;
-    }
-
-    .subtitle {
-      max-width: 580px;
-      margin: 1rem 0 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.2rem);
-    }
-
-    .status-plaque {
-      min-width: 180px;
-      padding: 0.8rem 0.95rem;
-      border: 1px solid rgba(213, 170, 88, 0.45);
-      border-radius: 0.6rem;
-      background: rgba(16, 8, 6, 0.55);
-      color: var(--cream);
-      font-size: 0.73rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .status-plaque span {
-      color: var(--gold);
-    }
-
-    .chat-box {
-      overflow: hidden;
-      border: 1px solid rgba(213, 170, 88, 0.38);
-      border-radius: 0.8rem;
-      background: var(--ledger);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.025);
-    }
-
-    .chat-topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.85rem 1rem;
-      border-bottom: 1px solid var(--line);
-      background: rgba(0,0,0,0.16);
-    }
-
-    .chat-topline strong {
-      color: var(--gold);
-      font-size: 0.76rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .chat-topline span {
-      color: var(--muted);
-      font-size: 0.76rem;
-    }
-
-    .messages {
-      min-height: 380px;
-      max-height: 520px;
-      overflow-y: auto;
-      padding: 1.15rem;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.018), transparent 30%),
-        var(--ledger);
-    }
-
-    .message {
-      max-width: min(84%, 650px);
-      margin-bottom: 1rem;
-      padding: 0.95rem 1rem;
-      border: 1px solid var(--line-soft);
-      border-radius: 0.55rem;
-      line-height: 1.55;
-      white-space: pre-wrap;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.10);
-    }
-
-    .jackal-message {
-      border-left: 3px solid var(--gold);
-      background: rgba(69, 37, 25, 0.72);
-    }
-
-    .user-message {
-      margin-left: auto;
-      border-right: 3px solid #c66e5b;
-      background: var(--wine);
-      color: #fff2e3;
-    }
-
-    .sender {
-      display: block;
-      margin-bottom: 0.45rem;
-      color: var(--gold);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .user-message .sender {
-      color: #ffd5cb;
-    }
-
-    form {
-      display: flex;
-      gap: 0.7rem;
-      padding: 1rem;
-      border-top: 1px solid var(--line);
-      background: rgba(9, 4, 3, 0.42);
-    }
-
-    input {
-      flex: 1;
-      min-width: 0;
-      padding: 0.9rem 1rem;
-      border: 1px solid rgba(213, 170, 88, 0.35);
-      border-radius: 0.45rem;
-      background: #160b09;
-      color: var(--cream);
-      font: inherit;
-    }
-
-    input::placeholder {
-      color: #9c7b68;
-    }
-
-    input:focus {
-      outline: 2px solid rgba(213, 170, 88, 0.55);
-      border-color: var(--gold);
-    }
-
-    button {
-      padding: 0.85rem 1.1rem;
-      border: 1px solid #e5bd6f;
-      border-radius: 0.45rem;
-      background: var(--gold);
-      color: #24130f;
-      cursor: pointer;
-      font: inherit;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: transform 160ms ease, background 160ms ease;
-    }
-
-    button:hover:not(:disabled) {
-      transform: translateY(-2px);
-      background: #ecd181;
-    }
-
-    button:disabled,
-    input:disabled {
-      cursor: not-allowed;
-      opacity: 0.55;
-    }
-
-    .counter {
-      min-height: 48px;
-      padding: 0.95rem 1rem;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.8rem;
-      text-align: center;
-      background: rgba(0,0,0,0.15);
-    }
-
-    .counter.warning {
-      color: #efb0a0;
-    }
-
-    .den-note {
-      margin: 1rem 0 0;
-      color: #a98d79;
-      font-size: 0.78rem;
-      text-align: center;
-    }
-
-    .den-note span {
-      color: var(--gold);
-    }
-
-    .footer {
-      padding: 1.8rem 0 0.4rem;
-      color: #987967;
-      font-size: 0.75rem;
-      text-align: center;
-    }
-
-    @media (max-width: 650px) {
-      .page {
-        width: min(100% - 1rem, 1120px);
-      }
-
-      nav {
-        align-items: flex-start;
-        padding: 0.8rem;
-      }
-
-      .den-header {
-        grid-template-columns: 1fr;
-      }
-
-      .status-plaque {
-        justify-self: start;
-      }
-
-      .messages {
-        min-height: 330px;
-        padding: 0.8rem;
-      }
-
-      .message {
-        max-width: 92%;
-      }
-
-      form {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-main
   </style>
 </head>
 <body>
   <main class="page">
-cute]
     <nav><a class="wordmark" href="index.html">JACKALCORE</a><a class="back-link" href="jackal.html">← Back to Jackal</a></nav>
     <section class="den-shell">
       <header class="den-header"><div><p class="eyebrow">Flagship beast / public chat</p><h1>Jackal's Den</h1><p class="subtitle">What do you need me for now?</p></div><div class="den-side"><div class="status-plaque"><span>●</span> Awake, unfortunately</div><img class="sleepy-jackal-art" src="jackal-sleeping.png" alt="Pixel art of Jackal sleeping"></div></header>
@@ -419,72 +56,11 @@ cute]
       <p class="den-note"><span>Den rules:</span> no roleplay, no dependency, no pretending your homework solved itself.</p>
     </section>
     <footer class="footer">Jackal is currently being supervised. Barely.</footer>
-=======
-    <nav>
-      <a class="wordmark" href="index.html">JACKALCORE</a>
-      <a class="back-link" href="jackal.html">← Back to Jackal</a>
-    </nav>
-
-    <section class="den-shell">
-      <header class="den-header">
-        <div>
-          <p class="eyebrow">Flagship beast / public chat</p>
-          <h1>Jackal's Den</h1>
-          <p class="subtitle">What do you need me for now?</p>
-        </div>
-
-        <div class="status-plaque">
-          <span>●</span> Awake, unfortunately
-        </div>
-      </header>
-
-      <section class="chat-box">
-        <div class="chat-topline">
-          <strong>Conversation ledger</strong>
-          <span>Thinking remains your responsibility.</span>
-        </div>
-
-        <div class="messages" id="messages">
-          <div class="message jackal-message">
-            <span class="sender">Jackal</span>
-            Finish the thought.
-          </div>
-        </div>
-
-        <form id="chat-form">
-          <input
-            id="message-input"
-            type="text"
-            placeholder="Ask something coherent."
-            autocomplete="off"
-            maxlength="1000"
-          >
-          <button id="send-button" type="submit">Send</button>
-        </form>
-
-        <div class="counter" id="counter">
-          10 messages until Jackal needs a nap.
-        </div>
-      </section>
-
-      <p class="den-note">
-        <span>Den rules:</span> no roleplay, no dependency, no pretending your homework solved itself.
-      </p>
-    </section>
-
-    <footer class="footer">
-      Jackal is currently being supervised. Barely.
-    </footer>
-main
   </main>
   <script>
     const MAX_MESSAGES = 10;
     const NAP_DURATION_MS = 24 * 60 * 60 * 1000;
     const API_URL = "https://api.jackalcore.club/api/chat";
-cute]
-=======
-
-main
     const form = document.getElementById("chat-form");
     const input = document.getElementById("message-input");
     const messages = document.getElementById("messages");
@@ -500,7 +76,7 @@ main
       message.className = `message ${className}`;
       const senderLabel = document.createElement("span");
       senderLabel.className = "sender";
-cute]
+      senderLabel.textContent = sender;
       const messageText = document.createElement("span");
       messageText.textContent = text;
       message.appendChild(senderLabel);
@@ -518,61 +94,6 @@ cute]
       localStorage.removeItem("jackalNapUntil");
       localStorage.removeItem("jackalSessionId");
     }
-=======
-
-      const messageText = document.createElement("span");
-      messageText.textContent = text;
-
-      message.appendChild(senderLabel);
-      message.appendChild(messageText);
-
-      messages.appendChild(message);
-      messages.scrollTop = messages.scrollHeight;
-
-      return messageText;
-    }
-
-    function clearNapAndStartFresh() {
-      messageCount = 0;
-      napUntil = 0;
-      sessionId = "";
-
-      localStorage.removeItem("jackalMessageCount");
-      localStorage.removeItem("jackalNapUntil");
-      localStorage.removeItem("jackalSessionId");
-    }
-
-    function napTimeRemaining() {
-      return Math.max(0, napUntil - Date.now());
-    }
-
-    function formatTimeRemaining(milliseconds) {
-      const totalMinutes = Math.ceil(milliseconds / 60000);
-      const hours = Math.floor(totalMinutes / 60);
-      const minutes = totalMinutes % 60;
-
-      if (hours <= 0) {
-        return `${minutes} minute${minutes === 1 ? "" : "s"}`;
-      }
-
-      if (minutes === 0) {
-        return `${hours} hour${hours === 1 ? "" : "s"}`;
-      }
-
-      return `${hours}h ${minutes}m`;
-    }
-
-    function getNapMessage(remaining) {
-      const timeLeft = napTimeRemaining();
-
-      if (timeLeft > 0) {
-        return `Jackal needs a nap. The den reopens in ${formatTimeRemaining(timeLeft)}.`;
-      }
-
-      if (remaining === 1) {
-        return "One message until Jackal needs a nap.";
-      }
-main
 
     function napTimeRemaining() { return Math.max(0, napUntil - Date.now()); }
 
@@ -595,36 +116,16 @@ main
     }
 
     function updateCounter() {
-cute]
       if (napUntil && Date.now() >= napUntil) clearNapAndStartFresh();
-=======
-      if (napUntil && Date.now() >= napUntil) {
-        clearNapAndStartFresh();
-      }
-
-main
       const timeLeft = napTimeRemaining();
       const remaining = MAX_MESSAGES - messageCount;
       counter.textContent = getNapMessage(remaining);
       counter.classList.toggle("warning", timeLeft > 0 || remaining <= 3);
-cute]
       const closed = timeLeft > 0 || messageCount >= MAX_MESSAGES;
       if (closed) {
         input.disabled = true;
         sendButton.disabled = true;
         input.placeholder = timeLeft > 0 ? "Jackal is asleep." : "Jackal is unavailable.";
-=======
-
-      const napActive = timeLeft > 0;
-      const closed = napActive || messageCount >= MAX_MESSAGES;
-
-      if (closed) {
-        input.disabled = true;
-        sendButton.disabled = true;
-        input.placeholder = napActive
-          ? "Jackal is asleep."
-          : "Jackal is unavailable.";
-main
       } else if (!isWaitingForJackal) {
         input.disabled = false;
         sendButton.disabled = false;
@@ -635,7 +136,6 @@ main
 
     function setWaitingState(waiting) {
       isWaitingForJackal = waiting;
-cute]
       if (napTimeRemaining() > 0 || messageCount >= MAX_MESSAGES) { updateCounter(); return; }
       input.disabled = waiting;
       sendButton.disabled = waiting;
@@ -657,51 +157,9 @@ cute]
       return data.reply;
     }
 
-=======
-
-      if (napTimeRemaining() > 0 || messageCount >= MAX_MESSAGES) {
-        updateCounter();
-        return;
-      }
-
-      input.disabled = waiting;
-      sendButton.disabled = waiting;
-      sendButton.textContent = waiting ? "Thinking..." : "Send";
-    }
-
-    async function askJackal(text) {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: text,
-          session_id: sessionId
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.error || "The den has a plumbing problem."
-        );
-      }
-
-      if (data.session_id) {
-        sessionId = data.session_id;
-        localStorage.setItem("jackalSessionId", sessionId);
-      }
-
-      return data.reply;
-    }
-
-main
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const text = input.value.trim();
-cute]
       if (!text || messageCount >= MAX_MESSAGES || napTimeRemaining() > 0 || isWaitingForJackal) return;
       addMessage(text, "You", "user-message");
       input.value = "";
@@ -716,44 +174,6 @@ cute]
           napUntil = Date.now() + NAP_DURATION_MS;
           localStorage.setItem("jackalNapUntil", napUntil);
           addMessage("That is enough. Go think independently for a while.", "Jackal", "jackal-message");
-=======
-
-      if (
-        !text ||
-        messageCount >= MAX_MESSAGES ||
-        napTimeRemaining() > 0 ||
-        isWaitingForJackal
-      ) {
-        return;
-      }
-
-      addMessage(text, "You", "user-message");
-      input.value = "";
-      setWaitingState(true);
-
-      const replyText = addMessage(
-        "Jackal is deciding whether this deserves a response.",
-        "Jackal",
-        "jackal-message"
-      );
-
-      try {
-        const reply = await askJackal(text);
-        replyText.textContent = reply;
-
-        messageCount += 1;
-        localStorage.setItem("jackalMessageCount", messageCount);
-
-        if (messageCount >= MAX_MESSAGES) {
-          napUntil = Date.now() + NAP_DURATION_MS;
-          localStorage.setItem("jackalNapUntil", napUntil);
-
-          addMessage(
-            "That is enough. Go think independently for a while.",
-            "Jackal",
-            "jackal-message"
-          );
-main
         }
       } catch (error) {
         replyText.textContent = error.message;
@@ -764,10 +184,6 @@ main
     });
 
     updateCounter();
-cute]
-=======
-
-main
     window.setInterval(updateCounter, 60 * 1000);
   </script>
 </body>
