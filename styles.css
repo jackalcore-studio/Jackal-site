@@ -316,3 +316,60 @@ button { font: inherit; }
     width: min(390px, 96%);
   }
 }
+/* Homepage emergency contrast repair */
+
+body.home-page,
+.home-page {
+  background: #09060e !important;
+  color: #f8edf9 !important;
+}
+
+.home-page .site-shell,
+.home-page .hero,
+.home-page .section,
+.home-page .site-footer {
+  background: transparent !important;
+  color: #f8edf9 !important;
+}
+
+.home-page .display-title,
+.home-page .display-title span,
+.home-page .section-heading h2,
+.home-page .commitment-card h3,
+.home-page .creature-card h3,
+.home-page .flagship h2 {
+  color: #fff7ff !important;
+}
+
+.home-page .hero-tagline,
+.home-page .hero-copy,
+.home-page .section-heading p,
+.home-page .commitment-card p,
+.home-page .creature-card p,
+.home-page .footer-note,
+.home-page .footer-mini {
+  color: #e7d7ea !important;
+}
+
+.home-page .kicker,
+.home-page .creature-number {
+  color: #ff8fca !important;
+}
+
+.home-page .button.primary {
+  background: #ff74ba !important;
+  color: #170817 !important;
+}
+
+.home-page .button.secondary {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: #fff7ff !important;
+}
+
+.home-page .orbit-card,
+.home-page .commitment-card,
+.home-page .creature-card,
+.home-page .flagship-card {
+  background: rgba(28, 14, 37, 0.86) !important;
+  border-color: rgba(255, 116, 186, 0.22) !important;
+}
