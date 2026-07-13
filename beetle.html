@@ -18,13 +18,13 @@
     .beetle-page {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 18% 10%, rgba(87, 177, 165, 0.2), transparent 28%),
+        radial-gradient(circle at 18% 10%, rgba(87, 177, 165, 0.20), transparent 28%),
         radial-gradient(circle at 86% 14%, rgba(241, 202, 98, 0.16), transparent 24%),
         linear-gradient(135deg, #0f3b32 0%, #14483d 48%, #0d332e 100%);
       position: relative;
     }
 
-    .site-header.beetle-header {
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 10;
@@ -33,8 +33,8 @@
       align-items: center;
       gap: 24px;
       padding: 28px clamp(20px, 4vw, 44px);
-      border-bottom: 2px solid rgba(139, 190, 149, 0.5);
-      background: rgba(12, 54, 47, 0.9);
+      border-bottom: 2px solid rgba(139, 190, 149, 0.48);
+      background: rgba(12, 54, 47, 0.94);
       backdrop-filter: blur(10px);
     }
 
@@ -61,19 +61,19 @@
       border: 1px solid transparent;
       border-radius: 999px;
       padding: 9px 15px;
-      font-size: 0.92rem;
-      transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+      font-size: 0.95rem;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
     }
 
     .top-nav a:hover {
-      border-color: rgba(241, 202, 98, 0.5);
+      border-color: rgba(241, 202, 98, 0.48);
       background: rgba(241, 202, 98, 0.08);
-      color: #fff6d4;
+      transform: translateY(-1px);
     }
 
     .top-nav a.active {
       border-color: #f1ca62;
-      background: rgba(241, 202, 98, 0.1);
+      background: rgba(241, 202, 98, 0.10);
       color: #fff6d4;
     }
 
@@ -143,7 +143,9 @@
       z-index: 1;
     }
 
-    .kicker {
+    .kicker,
+    .demo-kicker,
+    .section-kicker {
       color: #f1ca62;
       font-size: 0.88rem;
       font-weight: 900;
@@ -197,6 +199,12 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-size: 0.86rem;
+      transition: transform 160ms ease, filter 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
     }
 
     .button.primary {
@@ -272,10 +280,21 @@
       opacity: 0.9;
     }
 
+    .demo-section,
+    .section {
+      margin-top: 28px;
+      padding: clamp(24px, 4vw, 40px);
+      border: 2px solid rgba(139, 190, 149, 0.34);
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(16, 68, 58, 0.82), rgba(10, 49, 43, 0.92));
+      box-shadow:
+        0 14px 38px rgba(4, 28, 24, 0.24),
+        inset 0 0 0 1px rgba(255,255,255,0.035);
+    }
+
     .demo-section {
       margin-top: 40px;
-      padding: clamp(24px, 4vw, 38px);
-      border-radius: 32px;
       border: 3px solid rgba(139, 190, 149, 0.55);
       background: rgba(11, 52, 45, 0.62);
       position: relative;
@@ -292,14 +311,18 @@
       text-transform: uppercase;
     }
 
-    .demo-kicker,
-    .section-kicker {
-      color: #f1ca62;
-      font-size: 0.86rem;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    .section p,
+    .demo-section p {
+      max-width: 920px;
+      margin: 0 0 18px;
+      color: #f4e7bd;
+      line-height: 1.74;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .section p:last-child,
+    .demo-section p:last-child {
+      margin-bottom: 0;
     }
 
     .chat-demo {
@@ -328,30 +351,6 @@
     .speaker {
       color: #f1ca62;
       font-weight: 900;
-    }
-
-    .section {
-      margin-top: 28px;
-      padding: clamp(24px, 4vw, 40px);
-      border: 2px solid rgba(139, 190, 149, 0.34);
-      border-radius: 30px;
-      background:
-        linear-gradient(135deg, rgba(16, 68, 58, 0.82), rgba(10, 49, 43, 0.92));
-      box-shadow:
-        0 14px 38px rgba(4, 28, 24, 0.24),
-        inset 0 0 0 1px rgba(255,255,255,0.035);
-    }
-
-    .section p {
-      max-width: 920px;
-      margin: 0 0 18px;
-      color: #f4e7bd;
-      line-height: 1.74;
-      font-size: clamp(1rem, 2vw, 1.15rem);
-    }
-
-    .section p:last-child {
-      margin-bottom: 0;
     }
 
     .grid {
@@ -408,6 +407,36 @@
       line-height: 1.66;
     }
 
+    .warning-box {
+      margin-top: 24px;
+      border: 3px solid rgba(241, 202, 98, 0.72);
+      border-radius: 28px;
+      padding: clamp(20px, 4vw, 30px);
+      background:
+        radial-gradient(circle at top right, rgba(241, 202, 98, 0.14), transparent 34%),
+        rgba(255, 241, 199, 0.06);
+      box-shadow: 0 10px 0 rgba(4, 28, 24, 0.22);
+    }
+
+    .warning-box h3 {
+      margin: 0 0 12px;
+      color: #fff1c7;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .warning-box p {
+      margin-bottom: 14px;
+    }
+
+    .warning-box ul {
+      margin: 14px 0 0;
+      padding-left: 1.2rem;
+      color: #f4e7bd;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
     .chat-callout {
       margin-top: 24px;
       border: 2px solid rgba(241, 202, 98, 0.48);
@@ -427,23 +456,20 @@
     .creature-footer {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
       gap: 24px;
-      margin-top: 48px;
-      padding: 30px 0 0;
-      border-top: 1px solid rgba(139, 190, 149, 0.32);
-      color: rgba(244, 231, 189, 0.82);
-      font-size: 0.92rem;
-      line-height: 1.7;
+      align-items: flex-end;
+      padding: 40px 0 0;
+      color: rgba(244, 231, 189, 0.78);
+      font-size: 0.95rem;
     }
 
     .creature-footer p {
-      margin: 0;
+      margin: 0 0 8px;
     }
 
-    .creature-footer .footer-right {
-      text-align: right;
+    .creature-number {
       white-space: nowrap;
+      color: rgba(244, 231, 189, 0.78);
     }
 
     @media (max-width: 900px) {
@@ -455,7 +481,7 @@
         grid-template-columns: 1fr;
       }
 
-      .site-header.beetle-header {
+      .site-header {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -465,12 +491,8 @@
       }
 
       .creature-footer {
-        align-items: flex-start;
         flex-direction: column;
-      }
-
-      .creature-footer .footer-right {
-        text-align: left;
+        align-items: flex-start;
       }
     }
 
@@ -483,20 +505,12 @@
       .button {
         width: 100%;
       }
-
-      .top-nav {
-        gap: 4px;
-      }
-
-      .top-nav a {
-        padding: 8px 12px;
-      }
     }
   </style>
 </head>
 
 <body class="beetle-page">
-  <header class="site-header beetle-header">
+  <header class="site-header">
     <a class="brand" href="index.html">✦ Jackalcore</a>
 
     <nav class="top-nav">
@@ -621,6 +635,33 @@
     </section>
 
     <section class="section">
+      <div class="section-kicker">Safety boundary</div>
+      <h2>Not a bad idea generator.</h2>
+
+      <p>
+        Beetle is a chemistry learning creature, not a recipe machine for things that can hurt people.
+        It can explain concepts, structures, hazards, and why something is unsafe. It should not turn
+        curiosity into instructions for a disaster in a sink, shed, dorm room, or lab.
+      </p>
+
+      <div class="warning-box">
+        <h3>What Beetle will not teach</h3>
+        <p>
+          Beetle is not being built to provide procedural help for dangerous or restricted chemistry.
+          Especially not when the request is dressed up as “just theoretical.”
+        </p>
+
+        <ul>
+          <li>no pharmaceutical synthesis or drug-making instructions</li>
+          <li>no pyrotechnic, explosive, incendiary, or weaponized chemistry procedures</li>
+          <li>no step-by-step hazardous household product mixing</li>
+          <li>no poison optimization, extraction, concentration, or delivery advice</li>
+          <li>no “how do I make this more reactive/dangerous/effective” nonsense</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="section-kicker">The chemistry problem</div>
       <h2>Sometimes the missing detail is the entire answer.</h2>
 
@@ -690,22 +731,6 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-kicker">Boundaries</div>
-      <h2>Not a bad idea generator.</h2>
-
-      <p>
-        Beetle is not a homework vending machine, a drug synthesis assistant, a pyrotechnics
-        cookbook, or a creature that tells people to mix random household chemicals because the
-        internet got bored.
-      </p>
-
-      <p>
-        It can explain risk, identity, structure, bonding, and theory. It should not hand people a
-        dangerous procedure wrapped in a cute interface.
-      </p>
-    </section>
-
     <section class="section" id="status">
       <div class="section-kicker">Current status</div>
       <h2>Alive. Under the leaf.</h2>
@@ -724,8 +749,8 @@
         <p>Beetle does not yet have a lab coat. This is being addressed.</p>
       </div>
 
-      <div class="footer-right">
-        <p>Jackalcore / creature 02</p>
+      <div class="creature-number">
+        Jackalcore / creature 02
       </div>
     </footer>
   </main>
