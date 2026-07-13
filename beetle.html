@@ -9,120 +9,194 @@
   <style>
     body {
       margin: 0;
-      background: #061421;
-      color: #e9fbff;
+      background: #06111d;
+      color: #eafcff;
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
 
-    .beetle-overview {
+    .beetle-page {
       min-height: 100vh;
-      position: relative;
       background:
-        radial-gradient(circle at 12% 18%, rgba(84, 203, 216, 0.22), transparent 28%),
-        radial-gradient(circle at 88% 12%, rgba(108, 160, 255, 0.20), transparent 26%),
-        radial-gradient(circle at 70% 86%, rgba(89, 220, 164, 0.16), transparent 28%),
-        linear-gradient(135deg, #061421 0%, #0b2134 45%, #071827 100%);
+        radial-gradient(circle at 15% 12%, rgba(91, 210, 226, 0.18), transparent 28%),
+        radial-gradient(circle at 86% 18%, rgba(126, 232, 209, 0.14), transparent 26%),
+        radial-gradient(circle at 70% 86%, rgba(94, 139, 255, 0.14), transparent 30%),
+        linear-gradient(135deg, #06111d 0%, #071827 44%, #09253d 100%);
+      position: relative;
+      min-height: 100vh;
     }
 
-    .bubble {
+    .beetle-bubble {
       position: absolute;
-      border: 1px solid rgba(184, 244, 255, 0.28);
       border-radius: 999px;
-      background: rgba(184, 244, 255, 0.05);
-      box-shadow: 0 0 30px rgba(110, 220, 240, 0.08);
+      border: 1px solid rgba(190, 247, 255, 0.24);
+      background: rgba(190, 247, 255, 0.045);
+      box-shadow: 0 0 28px rgba(126, 232, 209, 0.08);
       pointer-events: none;
+      z-index: 0;
     }
 
-    .bubble.one { width: 90px; height: 90px; left: 7%; top: 18%; }
-    .bubble.two { width: 42px; height: 42px; right: 14%; top: 21%; }
-    .bubble.three { width: 130px; height: 130px; right: 8%; bottom: 12%; }
-    .bubble.four { width: 56px; height: 56px; left: 16%; bottom: 18%; }
-    .bubble.five { width: 34px; height: 34px; left: 48%; top: 9%; }
-    .bubble.six { width: 76px; height: 76px; right: 30%; bottom: 7%; }
-
-    .emoji-corner {
-      position: absolute;
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      opacity: 0.55;
-      filter: drop-shadow(0 0 18px rgba(102, 221, 238, 0.2));
-      pointer-events: none;
+    .beetle-bubble.one {
+      width: 76px;
+      height: 76px;
+      left: 5%;
+      top: 20%;
     }
 
-    .emoji-corner.left { left: 34px; bottom: 38px; }
-    .emoji-corner.right { right: 38px; top: 38px; }
+    .beetle-bubble.two {
+      width: 42px;
+      height: 42px;
+      right: 11%;
+      top: 22%;
+    }
+
+    .beetle-bubble.three {
+      width: 118px;
+      height: 118px;
+      right: 7%;
+      bottom: 13%;
+    }
+
+    .beetle-bubble.four {
+      width: 54px;
+      height: 54px;
+      left: 12%;
+      bottom: 16%;
+    }
+
+    .site-header.beetle-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px clamp(20px, 4vw, 44px);
+      border-bottom: 1px solid rgba(168, 244, 255, 0.16);
+      background: rgba(3, 13, 24, 0.46);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      color: #bdf9ff;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-nav a {
+      color: #d8f8ff;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 0.92rem;
+    }
+
+    .top-nav a.active {
+      border-color: rgba(168, 244, 255, 0.34);
+      background: rgba(168, 244, 255, 0.09);
+    }
 
     .beetle-shell {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 42px 0 70px;
+      padding: 32px 0 70px;
       position: relative;
       z-index: 1;
     }
 
-    .beetle-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 38px;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .beetle-nav a {
-      color: #a8f4ff;
-      text-decoration: none;
-    }
-
-    .beetle-hero,
-    .section-card {
-      border: 1px solid rgba(168, 244, 255, 0.18);
+    .beetle-frame {
+      border: 2px solid rgba(168, 244, 255, 0.18);
       border-radius: 34px;
+      padding: clamp(24px, 4vw, 40px);
       background:
-        linear-gradient(135deg, rgba(10, 37, 58, 0.86), rgba(9, 27, 44, 0.92));
+        radial-gradient(circle at 90% 20%, rgba(126, 232, 209, 0.10), transparent 32%),
+        linear-gradient(135deg, rgba(8, 31, 51, 0.86), rgba(5, 20, 34, 0.94));
       box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.38),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(10px);
+        0 26px 72px rgba(0, 0, 0, 0.36),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(168, 244, 255, 0.25);
+      background: rgba(168, 244, 255, 0.08);
+      color: #d9fbff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
     }
 
     .beetle-hero {
-      padding: clamp(30px, 6vw, 62px);
-      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.8fr);
+      gap: clamp(28px, 5vw, 58px);
+      align-items: center;
+      min-height: 520px;
     }
 
-    .beetle-kicker {
-      color: #72e7c6;
+    .kicker {
+      color: #7ee8d1;
       font-size: 0.82rem;
       font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: clamp(4rem, 12vw, 8.5rem);
-      line-height: 0.85;
-      margin: 0 0 22px;
-      color: #f2feff;
-      letter-spacing: -0.06em;
+      margin: 0 0 18px;
+      color: #f3feff;
+      font-size: clamp(4.8rem, 12vw, 9rem);
+      line-height: 0.82;
+      letter-spacing: -0.075em;
     }
 
-    .intro {
-      max-width: 820px;
-      font-size: clamp(1.08rem, 2vw, 1.28rem);
-      line-height: 1.75;
-      color: #c9e8ef;
-      margin-bottom: 28px;
+    .subtitle {
+      margin: 0 0 20px;
+      color: #84ecd9;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 900;
+      font-size: 0.95rem;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      color: #c7e6ec;
+      font-size: clamp(1.04rem, 2vw, 1.22rem);
+      line-height: 1.72;
+      margin: 0 0 18px;
     }
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
     .button {
@@ -148,252 +222,400 @@
     .button.secondary {
       border: 1px solid rgba(168, 244, 255, 0.28);
       color: #d7fbff;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255,255,255,0.04);
     }
 
-    .section-card {
-      padding: clamp(24px, 4vw, 38px);
-      margin-bottom: 22px;
+    .art-panel {
+      min-height: 330px;
+      border-radius: 28px;
+      border: 3px solid rgba(126, 232, 209, 0.32);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(126, 232, 209, 0.24), transparent 22%),
+        radial-gradient(circle at 72% 28%, rgba(184, 244, 255, 0.16), transparent 16%),
+        linear-gradient(145deg, #0b2b46, #071a2a);
+      box-shadow:
+        0 18px 0 rgba(2, 12, 22, 0.36),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .section-card h2 {
+    .art-panel::before,
+    .art-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(190, 247, 255, 0.18);
+    }
+
+    .art-panel::before {
+      width: 220px;
+      height: 220px;
+      top: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .art-panel::after {
+      width: 310px;
+      height: 310px;
+      bottom: -120px;
+      right: -80px;
+    }
+
+    .art-label {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(234, 252, 255, 0.38);
+      border-radius: 999px;
+      padding: 14px 24px;
+      background: rgba(3, 13, 24, 0.42);
+      color: #eafcff;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .art-icons {
+      position: absolute;
+      right: 24px;
+      bottom: 22px;
+      font-size: 1.75rem;
+      letter-spacing: 8px;
+      opacity: 0.8;
+    }
+
+    .section {
+      border: 1px solid rgba(168, 244, 255, 0.16);
+      border-radius: 30px;
+      padding: clamp(24px, 4vw, 40px);
+      margin-top: 24px;
+      background:
+        linear-gradient(135deg, rgba(7, 29, 47, 0.76), rgba(5, 22, 36, 0.88));
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.22),
+        inset 0 0 0 1px rgba(255,255,255,0.035);
+    }
+
+    .section h2 {
       margin: 0 0 14px;
       color: #f4feff;
       font-size: clamp(1.7rem, 4vw, 2.7rem);
-      letter-spacing: -0.035em;
+      letter-spacing: -0.04em;
     }
 
-    .section-card p {
+    .section p {
+      max-width: 900px;
+      margin: 0 0 16px;
       color: #c7e4ea;
       line-height: 1.72;
       font-size: 1.03rem;
-      max-width: 880px;
     }
 
-    .overview-grid {
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 22px;
     }
 
-    .overview-box {
-      border: 1px solid rgba(168, 244, 255, 0.16);
+    .mini-card {
+      border: 1px solid rgba(168, 244, 255, 0.14);
       border-radius: 24px;
       padding: 22px;
       background: rgba(4, 19, 31, 0.48);
     }
 
-    .overview-box h3 {
+    .mini-card h3 {
       margin: 0 0 10px;
       color: #f3feff;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
     }
 
-    .overview-box p {
+    .mini-card p {
       margin: 0;
       color: #bfdde5;
       line-height: 1.65;
       font-size: 0.97rem;
     }
 
-    .feature-list {
+    .list {
       display: grid;
       gap: 14px;
       margin-top: 22px;
     }
 
-    .feature {
+    .list-item {
       border: 1px solid rgba(168, 244, 255, 0.14);
       border-radius: 22px;
       padding: 18px 20px;
-      background: rgba(255, 255, 255, 0.035);
+      background: rgba(255,255,255,0.035);
     }
 
-    .feature strong {
+    .list-item strong {
       display: block;
       color: #8df2dd;
       margin-bottom: 6px;
       letter-spacing: 0.04em;
     }
 
-    .feature span {
+    .list-item span {
       color: #c8e6eb;
       line-height: 1.65;
     }
 
-    .lab-note {
-      margin-top: 24px;
-      padding: 20px 22px;
-      border-left: 4px solid #7ee8d1;
-      border-radius: 18px;
-      background: rgba(126, 232, 209, 0.08);
-      color: #d5f6f7;
-      line-height: 1.65;
+    .chat-callout {
+      margin-top: 22px;
+      border: 1px solid rgba(126, 232, 209, 0.24);
+      border-radius: 26px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(126, 232, 209, 0.12), transparent 34%),
+        rgba(126, 232, 209, 0.06);
     }
 
-    @media (max-width: 820px) {
-      .overview-grid {
+    .chat-callout h3 {
+      margin: 0 0 10px;
+      color: #f3feff;
+      font-size: 1.28rem;
+    }
+
+    .footer-note {
+      padding: 30px 0 0;
+      text-align: center;
+      color: rgba(220, 248, 252, 0.68);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .beetle-hero {
         grid-template-columns: 1fr;
       }
 
-      .beetle-nav {
-        gap: 16px;
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header.beetle-header {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .top-nav {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 
-<body class="beetle-overview">
-  <div class="bubble one"></div>
-  <div class="bubble two"></div>
-  <div class="bubble three"></div>
-  <div class="bubble four"></div>
-  <div class="bubble five"></div>
-  <div class="bubble six"></div>
-  <div class="emoji-corner left">🫧</div>
-  <div class="emoji-corner right">⚗️</div>
+<body class="beetle-page">
+  <div class="beetle-bubble one"></div>
+  <div class="beetle-bubble two"></div>
+  <div class="beetle-bubble three"></div>
+  <div class="beetle-bubble four"></div>
+
+  <header class="site-header beetle-header">
+    <a class="brand" href="index.html">✦ Jackalcore</a>
+
+    <nav class="top-nav">
+      <a href="index.html">Jackalcore</a>
+      <a href="jackal.html">Jackal</a>
+      <a class="active" href="beetle.html">Beetle</a>
+      <a href="hyena.html">Hyena</a>
+    </nav>
+  </header>
 
   <main class="beetle-shell">
-    <nav class="beetle-nav">
-      <a href="index.html">← Jackalcore</a>
-      <a href="beetle-chat.html">Preview chat →</a>
-    </nav>
-
-    <section class="beetle-hero">
-      <div class="beetle-kicker">Chemistry creature in development</div>
-      <h1>Beetle</h1>
-
-      <p class="intro">
-        Beetle is a chemistry-focused AI being built to make one of the hardest STEM fields
-        feel less like a locked cabinet full of unlabeled glassware. It is part tutor, part
-        lookup tool, and part tiny lab creature that knows when to say, “that depends.”
-      </p>
-
-      <p class="intro">
-        The goal is not to make chemistry look simple. The goal is to make chemistry
-        approachable without flattening it into lies. Beetle should be able to explain a
-        compound to a beginner, talk through structure and bonding with an intermediate learner,
-        and stop wasting time when the user clearly already knows the basics.
-      </p>
-
-      <div class="button-row">
-        <a class="button primary" href="beetle-chat.html">Open preview chat</a>
-        <a class="button secondary" href="index.html">Back to creatures</a>
+    <section class="beetle-frame">
+      <div class="tag-row">
+        <span class="tag">⚗️ source lookup</span>
+        <span class="tag">🫧 adaptive explanations</span>
+        <span class="tag">🧪 conditions matter</span>
+        <span class="tag">🪲 under the leaf</span>
       </div>
+
+      <section class="beetle-hero">
+        <div>
+          <div class="kicker">Chemistry creature in development</div>
+          <h1>Beetle</h1>
+          <p class="subtitle">The chemistry helper that asks what you actually mean.</p>
+
+          <p class="hero-copy">
+            Beetle is a chemistry-focused AI being built to make one of the hardest STEM fields
+            feel less like a locked cabinet full of unlabeled glassware.
+          </p>
+
+          <p class="hero-copy">
+            It is part tutor, part lookup tool, and part tiny lab creature that knows when to say,
+            “that depends.” The goal is not to make chemistry look simple. The goal is to make it
+            approachable without flattening it into lies.
+          </p>
+
+          <div class="button-row">
+            <a class="button primary" href="beetle-chat.html">Open preview chat</a>
+            <a class="button secondary" href="#purpose">Read the plan</a>
+          </div>
+        </div>
+
+        <aside class="art-panel" aria-label="Commissioned art pending">
+          <div class="art-label">Specimen art / pending commission</div>
+          <div class="art-icons">🫧 ⚗️ 🪲</div>
+        </aside>
+      </section>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle is for</h2>
+    <section class="section" id="purpose">
+      <h2>Purpose</h2>
+
       <p>
-        Beetle is being designed as a chemistry helper with a spine. It should help users
-        understand formulas, structures, bonding, solubility, oxidation states, periodic trends,
-        reaction plausibility, and the annoying little condition-dependent details that make
-        chemistry chemistry.
+        Beetle is being designed as a chemistry helper with a spine. It should be able to explain
+        formulas, structures, bonding, solubility, oxidation states, periodic trends, reaction
+        plausibility, and the annoying condition-dependent details that make chemistry chemistry.
       </p>
 
       <p>
-        A lot of AI tools answer chemistry questions with confident mush. Beetle’s job is to
-        be slower, clearer, and less willing to hallucinate a compound into existence just
-        because the user typed something that sounded science-flavored.
+        A lot of AI tools answer chemistry questions with confident mush. Beetle’s job is to be
+        slower, clearer, and less willing to hallucinate a compound into existence just because the
+        user typed something that sounded science-flavored.
       </p>
+    </section>
 
-      <div class="overview-grid">
-        <article class="overview-box">
-          <h3>Source-backed lookup</h3>
+    <section class="section">
+      <h2>Core functions</h2>
+
+      <div class="grid">
+        <article class="mini-card">
+          <h3>Look things up</h3>
           <p>
-            Beetle is being wired to check chemical identity data before speaking too loudly.
-            Formula, molecular weight, IUPAC name, SMILES, and other basics should come from
-            actual lookup instead of model vibes.
+            Beetle is being connected to chemical identity data so it can check formula, molecular
+            weight, IUPAC name, identifiers, and structure data before talking too loudly.
           </p>
         </article>
 
-        <article class="overview-box">
-          <h3>Adaptive teaching</h3>
+        <article class="mini-card">
+          <h3>Teach at the right level</h3>
           <p>
-            A beginner should get plain language. An advanced user should get chemistry.
+            A beginner should get plain language. A chemistry student should get chemistry.
             Beetle’s job is to notice the difference and adjust without being condescending.
           </p>
         </article>
 
-        <article class="overview-box">
-          <h3>Conditions matter</h3>
+        <article class="mini-card">
+          <h3>Ask for conditions</h3>
           <p>
-            Concentration, solvent, temperature, structure, oxidation state, and physical form
-            can change the answer. Beetle is allowed to be annoying about that. Lovingly.
+            Solvent, concentration, temperature, oxidation state, structure, and physical form can
+            all change the answer. Beetle is allowed to be annoying about that. Lovingly.
           </p>
         </article>
       </div>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle should be good at</h2>
+    <section class="section">
+      <h2>The chemistry problem</h2>
 
-      <div class="feature-list">
-        <div class="feature">
-          <strong>Compound identity</strong>
+      <p>
+        Chemistry is one of those subjects where a small missing detail can completely change the
+        answer. “What happens when these react?” is not always one question. It might be ten
+        questions wearing a lab coat.
+      </p>
+
+      <p>
+        Beetle is being built around that reality. Instead of pretending every question has one neat
+        answer, it should help the user identify what kind of chemical question they are actually
+        asking: identity, structure, bonding, safety, mechanism, plausibility, or conditions.
+      </p>
+
+      <div class="list">
+        <div class="list-item">
+          <strong>Identity before explanation</strong>
           <span>
-            Looking up what a chemical is before explaining it: formula, mass, names, identifiers,
-            and structural representations when available.
+            First, figure out what the compound actually is. Formula, mass, names, and identifiers
+            matter before the model starts improvising like a haunted textbook.
           </span>
         </div>
 
-        <div class="feature">
-          <strong>Level-matched explanations</strong>
+        <div class="list-item">
+          <strong>Concept before paragraph</strong>
           <span>
-            Explaining chlorine differently to a middle-school student, a high-school student,
-            a first-year chemistry student, and someone who casually says “ligand field splitting.”
+            Beetle should teach the idea, not just generate a polished answer. A good explanation
+            should leave the user with a better mental model.
           </span>
         </div>
 
-        <div class="feature">
-          <strong>Reaction plausibility</strong>
+        <div class="list-item">
+          <strong>Context before confidence</strong>
           <span>
-            Talking through whether a reaction makes chemical sense, what factors matter, and
-            what information is missing before pretending there is one universal answer.
-          </span>
-        </div>
-
-        <div class="feature">
-          <strong>Concept repair</strong>
-          <span>
-            Helping users untangle misconceptions without making them feel stupid for asking.
-            Chemistry is already rude enough on its own.
+            If the answer depends on conditions, Beetle should say so. Chemistry does not care
+            that the user wanted a simple answer.
           </span>
         </div>
       </div>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle is not</h2>
+    <section class="section">
+      <h2>Chat preview</h2>
+
       <p>
-        Beetle is not meant to be a homework vending machine, a drug synthesis assistant, a
-        pyrotechnics cookbook, or a creature that tells people to mix random household chemicals
-        because the internet got bored. It can explain risk, identity, structure, and theory.
-        It should not hand people a dangerous procedure wrapped in a cute interface.
+        Beetle’s public chat is currently a preview page, not the finished chemistry brain. It shows
+        what the interface will feel like while the real Beetle is still being tested separately in
+        development.
       </p>
 
       <p>
-        It also is not meant to replace actual thought. Beetle should help users build a mental
-        model, not just hand them a polished paragraph and call that learning.
+        For now, the preview chat gives placeholder responses and beetle facts. Later, it is meant
+        to connect to the actual chemistry system: source-backed lookup, adaptive explanations, and
+        enough caution to avoid turning chemistry help into a bad idea generator.
+      </p>
+
+      <div class="chat-callout">
+        <h3>Preview the jar 🫧</h3>
+        <p>
+          The beetle is present. The lab coat is still being tailored. You can poke the preview,
+          but the real chemistry brain is not publicly connected yet.
+        </p>
+
+        <a class="button primary" href="beetle-chat.html">Open Beetle chat preview</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Boundaries</h2>
+
+      <p>
+        Beetle is not a homework vending machine, a drug synthesis assistant, a pyrotechnics
+        cookbook, or a creature that tells people to mix random household chemicals because the
+        internet got bored.
+      </p>
+
+      <p>
+        It can explain risk, identity, structure, bonding, and theory. It should not hand people a
+        dangerous procedure wrapped in a cute interface.
       </p>
     </section>
 
-    <section class="section-card">
+    <section class="section">
       <h2>Current status</h2>
-      <p>
-        Beetle is still in development. The public chat page is only a preview for now, while
-        the real chemistry brain is being tested separately with PubChem lookup and local model
-        reasoning. The current focus is making Beetle better at identifying compounds, asking
-        for missing chemical context, and adapting to how much chemistry the user actually knows.
-      </p>
 
-      <p class="lab-note">
-        Translation: the beetle is alive, but still under the leaf. Do not tap the glass too hard.
+      <p>
+        Beetle is still in development. The real chemistry brain is being tested separately with
+        PubChem lookup and local model reasoning. The current focus is making Beetle better at
+        identifying compounds, asking for missing chemical context, and adapting to how much
+        chemistry the user actually knows.
       </p>
     </section>
+
+    <p class="footer-note">
+      built by snickerdoodles · Beetle remains under the leaf
+    </p>
   </main>
 </body>
 </html>
