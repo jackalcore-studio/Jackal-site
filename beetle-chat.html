@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beetle Chat Preview — Jackalcore</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #061421;
+      color: #e9fbff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .beetle-chat-page {
+      min-height: 100vh;
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(103, 204, 232, 0.22), transparent 32%),
+        radial-gradient(circle at 86% 72%, rgba(98, 242, 190, 0.15), transparent 30%),
+        linear-gradient(135deg, #04111f 0%, #092239 48%, #071827 100%);
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(190, 247, 255, 0.28);
+      background: rgba(190, 247, 255, 0.055);
+      pointer-events: none;
+    }
+
+    .bubble.one { width: 66px; height: 66px; left: 8%; top: 18%; }
+    .bubble.two { width: 120px; height: 120px; right: 8%; top: 16%; }
+    .bubble.three { width: 46px; height: 46px; right: 19%; bottom: 16%; }
+    .bubble.four { width: 92px; height: 92px; left: 12%; bottom: 12%; }
+
+    .emoji-corner {
+      position: absolute;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      opacity: 0.52;
+      pointer-events: none;
+    }
+
+    .emoji-corner.left { left: 32px; top: 34px; }
+    .emoji-corner.right { right: 34px; bottom: 34px; }
+
+    .chat-shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .beetle-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .beetle-nav a {
+      color: #a8f4ff;
+      text-decoration: none;
+    }
+
+    .chat-hero {
+      margin-bottom: 24px;
+      padding: 28px 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(168, 244, 255, 0.18);
+      background: rgba(8, 31, 51, 0.72);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.28);
+    }
+
+    .chat-kicker {
+      color: #7ee8d1;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(3.2rem, 9vw, 6.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      color: #f4feff;
+    }
+
+    .chat-hero p {
+      max-width: 720px;
+      margin: 0;
+      color: #c5e4ea;
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    .chat-card {
+      border: 1px solid rgba(168, 244, 255, 0.18);
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(6, 25, 42, 0.88), rgba(8, 34, 53, 0.92));
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.34),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(126, 232, 209, 0.12);
+      border-bottom: 1px solid rgba(168, 244, 255, 0.14);
+      color: #dbfbff;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .chat-log {
+      height: min(52vh, 520px);
+      min-height: 360px;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .message {
+      max-width: 76%;
+      padding: 16px 18px;
+      border-radius: 24px;
+      line-height: 1.55;
+      font-size: 1rem;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+
+    .message.beetle {
+      align-self: flex-start;
+      background: rgba(196, 245, 234, 0.12);
+      border: 1px solid rgba(168, 244, 255, 0.20);
+      color: #e2fbff;
+      border-bottom-left-radius: 8px;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: rgba(126, 232, 209, 0.88);
+      color: #061421;
+      border-bottom-right-radius: 8px;
+    }
+
+    .speaker {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.75;
+    }
+
+    .chat-controls {
+      display: flex;
+      gap: 12px;
+      padding: 18px;
+      border-top: 1px solid rgba(168, 244, 255, 0.14);
+      background: rgba(2, 12, 22, 0.42);
+    }
+
+    input {
+      flex: 1;
+      border: 1px solid rgba(168, 244, 255, 0.2);
+      border-radius: 999px;
+      padding: 15px 18px;
+      font-size: 1rem;
+      color: #e9fbff;
+      background: rgba(255,255,255,0.055);
+      outline: none;
+    }
+
+    input::placeholder {
+      color: rgba(218, 246, 250, 0.58);
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0 24px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #7ee8d1;
+      color: #061421;
+      cursor: pointer;
+    }
+
+    .chat-note {
+      margin: 18px 0 0;
+      text-align: center;
+      color: #bddde4;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .beetle-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .message {
+        max-width: 92%;
+      }
+
+      .chat-controls {
+        flex-direction: column;
+      }
+
+      button {
+        min-height: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body class="beetle-chat-page">
+  <div class="bubble one"></div>
+  <div class="bubble two"></div>
+  <div class="bubble three"></div>
+  <div class="bubble four"></div>
+  <div class="emoji-corner left">⚗️</div>
+  <div class="emoji-corner right">🫧</div>
+
+  <main class="chat-shell">
+    <nav class="beetle-nav">
+      <a href="beetle.html">← Beetle overview</a>
+      <a href="index.html">Jackalcore</a>
+    </nav>
+
+    <section class="chat-hero">
+      <div class="chat-kicker">Preview chat</div>
+      <h1>Beetle Chat</h1>
+      <p>
+        This is the future Beetle interface: calm chemistry help, source-backed lookup,
+        and explanations that adapt to how much chemistry the user already knows.
+      </p>
+    </section>
+
+    <section class="chat-card">
+      <div class="chat-header">
+        <span>Beetle preview</span>
+        <span>Not connected yet</span>
+      </div>
+
+      <div class="chat-log" id="chatLog">
+        <div class="message beetle">
+          <span class="speaker">Beetle</span>
+          Ask me something chemistry-shaped. I am not fully awake yet, but I can rattle around in the jar.
+        </div>
+      </div>
+
+      <form class="chat-controls" id="beetleForm">
+        <input id="beetleInput" autocomplete="off" placeholder="Ask about caffeine, chlorine, beetles, or chemical nonsense..." />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <p class="chat-note">
+      Public demo only. Real Beetle is still being assembled under a rock somewhere.
+    </p>
+  </main>
+
+  <script>
+    const facts = [
+      "Not fully developed. Did you know blue death-feigning beetles play possum when threatened?",
+      "Try again later. Did you know rhino beetles can spend most of their lives as larvae?",
+      "Still under construction. Did you know bombardier beetles can spray hot defensive chemicals?",
+      "Beetle is not awake yet. Did you know ladybugs are beetles, not bugs in the true-bug sense?",
+      "Chemistry brain loading. Did you know some beetles produce shiny structural colors without relying on ordinary pigment?",
+      "Not connected yet. Did you know diving beetles can carry air bubbles underwater like tiny absurd scuba tanks?"
+    ];
+
+    const form = document.getElementById("beetleForm");
+    const input = document.getElementById("beetleInput");
+    const chatLog = document.getElementById("chatLog");
+
+    function addMessage(kind, text) {
+      const bubble = document.createElement("div");
+      bubble.className = `message ${kind}`;
+      bubble.innerHTML = `<span class="speaker">${kind === "user" ? "You" : "Beetle"}</span>${text}`;
+      chatLog.appendChild(bubble);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage("user", text);
+      input.value = "";
+
+      const reply = facts[Math.floor(Math.random() * facts.length)];
+
+      setTimeout(() => {
+        addMessage("beetle", reply);
+      }, 350);
+    });
+  </script>
+</body>
+</html>
