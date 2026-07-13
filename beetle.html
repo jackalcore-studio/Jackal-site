@@ -9,8 +9,8 @@
   <style>
     body {
       margin: 0;
-      background: #06111d;
-      color: #eafcff;
+      background: #123f36;
+      color: #fff1c7;
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
@@ -18,50 +18,10 @@
     .beetle-page {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 12%, rgba(91, 210, 226, 0.18), transparent 28%),
-        radial-gradient(circle at 86% 18%, rgba(126, 232, 209, 0.14), transparent 26%),
-        radial-gradient(circle at 70% 86%, rgba(94, 139, 255, 0.14), transparent 30%),
-        linear-gradient(135deg, #06111d 0%, #071827 44%, #09253d 100%);
+        radial-gradient(circle at 18% 10%, rgba(87, 177, 165, 0.2), transparent 28%),
+        radial-gradient(circle at 86% 14%, rgba(241, 202, 98, 0.16), transparent 24%),
+        linear-gradient(135deg, #0f3b32 0%, #14483d 48%, #0d332e 100%);
       position: relative;
-      min-height: 100vh;
-    }
-
-    .beetle-bubble {
-      position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(190, 247, 255, 0.24);
-      background: rgba(190, 247, 255, 0.045);
-      box-shadow: 0 0 28px rgba(126, 232, 209, 0.08);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .beetle-bubble.one {
-      width: 76px;
-      height: 76px;
-      left: 5%;
-      top: 20%;
-    }
-
-    .beetle-bubble.two {
-      width: 42px;
-      height: 42px;
-      right: 11%;
-      top: 22%;
-    }
-
-    .beetle-bubble.three {
-      width: 118px;
-      height: 118px;
-      right: 7%;
-      bottom: 13%;
-    }
-
-    .beetle-bubble.four {
-      width: 54px;
-      height: 54px;
-      left: 12%;
-      bottom: 16%;
     }
 
     .site-header.beetle-header {
@@ -72,13 +32,13 @@
       align-items: center;
       gap: 24px;
       padding: 28px clamp(20px, 4vw, 44px);
-      border-bottom: 1px solid rgba(168, 244, 255, 0.16);
-      background: rgba(3, 13, 24, 0.46);
-      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(139, 190, 149, 0.5);
+      background: rgba(12, 54, 47, 0.84);
+      backdrop-filter: blur(10px);
     }
 
     .brand {
-      color: #bdf9ff;
+      color: #fff1c7;
       text-decoration: none;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -94,7 +54,7 @@
     }
 
     .top-nav a {
-      color: #d8f8ff;
+      color: #f7e6b6;
       text-decoration: none;
       border: 1px solid transparent;
       border-radius: 999px;
@@ -103,28 +63,40 @@
     }
 
     .top-nav a.active {
-      border-color: rgba(168, 244, 255, 0.34);
-      background: rgba(168, 244, 255, 0.09);
+      border-color: #f1ca62;
+      background: rgba(241, 202, 98, 0.08);
+      color: #fff6d4;
     }
 
     .beetle-shell {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0 70px;
+      padding: 32px 0 72px;
       position: relative;
       z-index: 1;
     }
 
     .beetle-frame {
-      border: 2px solid rgba(168, 244, 255, 0.18);
-      border-radius: 34px;
-      padding: clamp(24px, 4vw, 40px);
+      border: 3px solid rgba(139, 190, 149, 0.66);
+      border-radius: 38px;
+      padding: clamp(22px, 4vw, 40px);
       background:
-        radial-gradient(circle at 90% 20%, rgba(126, 232, 209, 0.10), transparent 32%),
-        linear-gradient(135deg, rgba(8, 31, 51, 0.86), rgba(5, 20, 34, 0.94));
+        radial-gradient(circle at 85% 18%, rgba(241, 202, 98, 0.08), transparent 30%),
+        linear-gradient(135deg, rgba(19, 75, 65, 0.94), rgba(13, 58, 51, 0.98));
       box-shadow:
-        0 26px 72px rgba(0, 0, 0, 0.36),
+        0 18px 0 rgba(4, 28, 24, 0.36),
         inset 0 0 0 1px rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .beetle-frame::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 2px solid rgba(139, 190, 149, 0.38);
+      border-radius: 30px;
+      pointer-events: none;
     }
 
     .tag-row {
@@ -132,6 +104,8 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 34px;
+      position: relative;
+      z-index: 1;
     }
 
     .tag {
@@ -141,100 +115,102 @@
       min-height: 34px;
       padding: 0 14px;
       border-radius: 999px;
-      border: 1px solid rgba(168, 244, 255, 0.25);
-      background: rgba(168, 244, 255, 0.08);
-      color: #d9fbff;
+      border: 2px solid rgba(241, 202, 98, 0.78);
+      background: rgba(255, 241, 199, 0.08);
+      color: #fff1c7;
       font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      box-shadow: 0 6px 0 rgba(4, 28, 24, 0.24);
     }
 
     .beetle-hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.8fr);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
       gap: clamp(28px, 5vw, 58px);
       align-items: center;
-      min-height: 520px;
+      min-height: 560px;
+      position: relative;
+      z-index: 1;
     }
 
     .kicker {
-      color: #7ee8d1;
-      font-size: 0.82rem;
+      color: #f1ca62;
+      font-size: 0.88rem;
       font-weight: 900;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     h1 {
       margin: 0 0 18px;
-      color: #f3feff;
-      font-size: clamp(4.8rem, 12vw, 9rem);
+      color: #fff1c7;
+      font-size: clamp(5.2rem, 13vw, 9.5rem);
       line-height: 0.82;
-      letter-spacing: -0.075em;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
     }
 
     .subtitle {
-      margin: 0 0 20px;
-      color: #84ecd9;
+      margin: 0 0 24px;
+      color: #f1ca62;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-weight: 900;
-      font-size: 0.95rem;
+      font-size: clamp(1rem, 2vw, 1.15rem);
     }
 
     .hero-copy {
-      max-width: 680px;
-      color: #c7e6ec;
-      font-size: clamp(1.04rem, 2vw, 1.22rem);
-      line-height: 1.72;
-      margin: 0 0 18px;
+      max-width: 720px;
+      color: #f4e7bd;
+      font-size: clamp(1.08rem, 2vw, 1.26rem);
+      line-height: 1.76;
+      margin: 0 0 20px;
     }
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 18px;
       text-decoration: none;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
     }
 
     .button.primary {
-      background: #7ee8d1;
-      color: #061421;
-      box-shadow: 0 12px 30px rgba(126, 232, 209, 0.18);
+      background: #f1ca62;
+      color: #1e1a10;
+      box-shadow: 0 8px 0 rgba(4, 28, 24, 0.34);
     }
 
     .button.secondary {
-      border: 1px solid rgba(168, 244, 255, 0.28);
-      color: #d7fbff;
-      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(241, 202, 98, 0.55);
+      color: #fff1c7;
+      background: rgba(255,255,255,0.035);
     }
 
     .art-panel {
-      min-height: 330px;
-      border-radius: 28px;
-      border: 3px solid rgba(126, 232, 209, 0.32);
+      min-height: 360px;
+      border-radius: 30px;
+      border: 4px solid rgba(139, 190, 149, 0.72);
       background:
-        radial-gradient(circle at 50% 42%, rgba(126, 232, 209, 0.24), transparent 22%),
-        radial-gradient(circle at 72% 28%, rgba(184, 244, 255, 0.16), transparent 16%),
-        linear-gradient(145deg, #0b2b46, #071a2a);
+        radial-gradient(circle at 50% 48%, rgba(255, 241, 199, 0.14), transparent 21%),
+        linear-gradient(145deg, #145f61, #0f4a4d);
       box-shadow:
-        0 18px 0 rgba(2, 12, 22, 0.36),
+        0 14px 0 rgba(4, 28, 24, 0.38),
         inset 0 0 0 1px rgba(255,255,255,0.08);
       position: relative;
       overflow: hidden;
@@ -243,78 +219,126 @@
       justify-content: center;
     }
 
-    .art-panel::before,
-    .art-panel::after {
+    .art-panel::before {
       content: "";
       position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(190, 247, 255, 0.18);
-    }
-
-    .art-panel::before {
-      width: 220px;
-      height: 220px;
-      top: 42px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 241, 199, 0.15);
+      top: 48px;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .art-panel::after {
-      width: 310px;
-      height: 310px;
-      bottom: -120px;
-      right: -80px;
+      content: "✦";
+      position: absolute;
+      font-size: 17rem;
+      color: rgba(255, 241, 199, 0.16);
+      line-height: 1;
     }
 
     .art-label {
       position: relative;
       z-index: 1;
-      border: 1px solid rgba(234, 252, 255, 0.38);
-      border-radius: 999px;
-      padding: 14px 24px;
-      background: rgba(3, 13, 24, 0.42);
-      color: #eafcff;
+      border: 2px solid #f1ca62;
+      border-radius: 16px;
+      padding: 16px 24px;
+      background: rgba(12, 54, 47, 0.74);
+      color: #fff1c7;
       font-weight: 900;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       text-align: center;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
     }
 
     .art-icons {
       position: absolute;
       right: 24px;
       bottom: 22px;
-      font-size: 1.75rem;
-      letter-spacing: 8px;
-      opacity: 0.8;
+      font-size: 1.6rem;
+      letter-spacing: 7px;
+      opacity: 0.9;
+    }
+
+    .demo-section {
+      margin-top: 40px;
+      padding: clamp(24px, 4vw, 38px);
+      border-radius: 32px;
+      border: 3px solid rgba(139, 190, 149, 0.55);
+      background: rgba(11, 52, 45, 0.62);
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-section h2,
+    .section h2 {
+      margin: 0 0 16px;
+      color: #fff1c7;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .demo-kicker,
+    .section-kicker {
+      color: #f1ca62;
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .chat-demo {
+      margin-top: 26px;
+      border: 3px solid rgba(139, 190, 149, 0.55);
+      border-radius: 30px;
+      padding: clamp(18px, 4vw, 34px);
+      background: rgba(9, 45, 40, 0.76);
+      box-shadow: inset 0 0 0 2px rgba(139, 190, 149, 0.22);
+    }
+
+    .chat-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 26px;
+      padding: 20px 0;
+      color: #f4e7bd;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.62;
+    }
+
+    .chat-row + .chat-row {
+      border-top: 2px solid rgba(139, 190, 149, 0.42);
+    }
+
+    .speaker {
+      color: #f1ca62;
+      font-weight: 900;
     }
 
     .section {
-      border: 1px solid rgba(168, 244, 255, 0.16);
-      border-radius: 30px;
+      margin-top: 28px;
       padding: clamp(24px, 4vw, 40px);
-      margin-top: 24px;
+      border: 2px solid rgba(139, 190, 149, 0.34);
+      border-radius: 30px;
       background:
-        linear-gradient(135deg, rgba(7, 29, 47, 0.76), rgba(5, 22, 36, 0.88));
+        linear-gradient(135deg, rgba(16, 68, 58, 0.82), rgba(10, 49, 43, 0.92));
       box-shadow:
-        0 18px 48px rgba(0, 0, 0, 0.22),
+        0 14px 38px rgba(4, 28, 24, 0.24),
         inset 0 0 0 1px rgba(255,255,255,0.035);
     }
 
-    .section h2 {
-      margin: 0 0 14px;
-      color: #f4feff;
-      font-size: clamp(1.7rem, 4vw, 2.7rem);
-      letter-spacing: -0.04em;
-    }
-
     .section p {
-      max-width: 900px;
-      margin: 0 0 16px;
-      color: #c7e4ea;
-      line-height: 1.72;
-      font-size: 1.03rem;
+      max-width: 920px;
+      margin: 0 0 18px;
+      color: #f4e7bd;
+      line-height: 1.74;
+      font-size: clamp(1rem, 2vw, 1.15rem);
     }
 
     .section p:last-child {
@@ -325,74 +349,76 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .mini-card {
-      border: 1px solid rgba(168, 244, 255, 0.14);
+      border: 2px solid rgba(139, 190, 149, 0.35);
       border-radius: 24px;
       padding: 22px;
-      background: rgba(4, 19, 31, 0.48);
+      background: rgba(8, 42, 36, 0.52);
     }
 
     .mini-card h3 {
       margin: 0 0 10px;
-      color: #f3feff;
+      color: #fff1c7;
       font-size: 1.08rem;
     }
 
     .mini-card p {
       margin: 0;
-      color: #bfdde5;
-      line-height: 1.65;
-      font-size: 0.97rem;
+      color: #ebdcad;
+      line-height: 1.62;
+      font-size: 0.98rem;
     }
 
     .list {
       display: grid;
       gap: 14px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .list-item {
-      border: 1px solid rgba(168, 244, 255, 0.14);
+      border: 2px solid rgba(139, 190, 149, 0.28);
       border-radius: 22px;
       padding: 18px 20px;
-      background: rgba(255,255,255,0.035);
+      background: rgba(255, 241, 199, 0.045);
     }
 
     .list-item strong {
       display: block;
-      color: #8df2dd;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
+      color: #f1ca62;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
     }
 
     .list-item span {
-      color: #c8e6eb;
-      line-height: 1.65;
+      color: #f4e7bd;
+      line-height: 1.66;
     }
 
     .chat-callout {
-      margin-top: 22px;
-      border: 1px solid rgba(126, 232, 209, 0.24);
+      margin-top: 24px;
+      border: 2px solid rgba(241, 202, 98, 0.48);
       border-radius: 26px;
       padding: 24px;
       background:
-        radial-gradient(circle at top right, rgba(126, 232, 209, 0.12), transparent 34%),
-        rgba(126, 232, 209, 0.06);
+        radial-gradient(circle at top right, rgba(241, 202, 98, 0.12), transparent 34%),
+        rgba(255, 241, 199, 0.04);
     }
 
     .chat-callout h3 {
       margin: 0 0 10px;
-      color: #f3feff;
-      font-size: 1.28rem;
+      color: #fff1c7;
+      font-size: 1.32rem;
     }
 
     .footer-note {
       padding: 30px 0 0;
       text-align: center;
-      color: rgba(220, 248, 252, 0.68);
+      color: rgba(244, 231, 189, 0.72);
       font-size: 0.92rem;
     }
 
@@ -414,15 +440,21 @@
         justify-content: flex-start;
       }
     }
+
+    @media (max-width: 620px) {
+      .chat-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
 <body class="beetle-page">
-  <div class="beetle-bubble one"></div>
-  <div class="beetle-bubble two"></div>
-  <div class="beetle-bubble three"></div>
-  <div class="beetle-bubble four"></div>
-
   <header class="site-header beetle-header">
     <a class="brand" href="index.html">✦ Jackalcore</a>
 
@@ -437,60 +469,88 @@
   <main class="beetle-shell">
     <section class="beetle-frame">
       <div class="tag-row">
-        <span class="tag">⚗️ source lookup</span>
-        <span class="tag">🫧 adaptive explanations</span>
-        <span class="tag">🧪 conditions matter</span>
-        <span class="tag">🪲 under the leaf</span>
+        <span class="tag">⚗️ chemistry companion</span>
+        <span class="tag">🫧 pruinescence study</span>
+        <span class="tag">🧪 source lookup</span>
+        <span class="tag">🪲 incubating</span>
       </div>
 
       <section class="beetle-hero">
         <div>
-          <div class="kicker">Chemistry creature in development</div>
+          <div class="kicker">Chemistry companion / incubating</div>
           <h1>Beetle</h1>
-          <p class="subtitle">The chemistry helper that asks what you actually mean.</p>
+          <p class="subtitle">Pruinescence.</p>
 
           <p class="hero-copy">
-            Beetle is a chemistry-focused AI being built to make one of the hardest STEM fields
-            feel less like a locked cabinet full of unlabeled glassware.
+            Pruinescence is the soft, powdery bloom that lets a blue death-feigning beetle wear
+            blue like it was manufactured for it. A tiny waxy surface catches light and turns an
+            insect into something halfway between a desert pebble and a scrap of sky.
           </p>
 
           <p class="hero-copy">
-            It is part tutor, part lookup tool, and part tiny lab creature that knows when to say,
-            “that depends.” The goal is not to make chemistry look simple. The goal is to make it
-            approachable without flattening it into lies.
+            The effect is delicate. Water can change the surface and dull the trick. One minute
+            the beetle looks dusted in pale blue; the next, the optical performance has been
+            interrupted by a bad day and a droplet.
+          </p>
+
+          <p class="hero-copy">
+            Confused? Beetle will help.
           </p>
 
           <div class="button-row">
-            <a class="button primary" href="beetle-chat.html">Open preview chat</a>
-            <a class="button secondary" href="#purpose">Read the plan</a>
+            <a class="button primary" href="#demo">See Beetle explain it</a>
+            <a class="button secondary" href="#status">Check the lab status</a>
           </div>
         </div>
 
         <aside class="art-panel" aria-label="Commissioned art pending">
-          <div class="art-label">Specimen art / pending commission</div>
+          <div class="art-label">Lab habitat / art pending</div>
           <div class="art-icons">🫧 ⚗️ 🪲</div>
         </aside>
       </section>
+
+      <section class="demo-section" id="demo">
+        <div class="demo-kicker">Tiny lab demonstration</div>
+        <h2>Complicated thing. Less complicated answer.</h2>
+
+        <div class="chat-demo">
+          <div class="chat-row">
+            <div class="speaker">You</div>
+            <div>How does pruinescence work?</div>
+          </div>
+
+          <div class="chat-row">
+            <div class="speaker">Beetle</div>
+            <div>
+              It is a waxy surface bloom that changes how light scatters across the beetle’s body,
+              which is why it looks dusty blue instead of merely brown. The effect can weaken when
+              the surface gets wet, because water changes the optical trick. Nature made a mood ring
+              and called it a beetle.
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <section class="section" id="purpose">
-      <h2>Purpose</h2>
+    <section class="section">
+      <div class="section-kicker">Mission</div>
+      <h2>A tiny lab overseer that meets you where you are.</h2>
 
       <p>
-        Beetle is being designed as a chemistry helper with a spine. It should be able to explain
-        formulas, structures, bonding, solubility, oxidation states, periodic trends, reaction
-        plausibility, and the annoying condition-dependent details that make chemistry chemistry.
+        Beetle is built to make one of STEM’s most intimidating subjects feel less locked behind
+        jargon, gatekeeping, and people who assume you were born knowing what a mole is.
       </p>
 
       <p>
-        A lot of AI tools answer chemistry questions with confident mush. Beetle’s job is to be
-        slower, clearer, and less willing to hallucinate a compound into existence just because the
-        user typed something that sounded science-flavored.
+        It should be able to explain chemistry to a beginner without talking down to them, answer a
+        chemistry student without wasting their time, and admit when a question needs more context
+        instead of pretending every reaction takes place in a perfectly labeled cartoon beaker.
       </p>
     </section>
 
     <section class="section">
-      <h2>Core functions</h2>
+      <div class="section-kicker">Core functions</div>
+      <h2>What Beetle is being built to do.</h2>
 
       <div class="grid">
         <article class="mini-card">
@@ -520,7 +580,8 @@
     </section>
 
     <section class="section">
-      <h2>The chemistry problem</h2>
+      <div class="section-kicker">The chemistry problem</div>
+      <h2>Sometimes the missing detail is the entire answer.</h2>
 
       <p>
         Chemistry is one of those subjects where a small missing detail can completely change the
@@ -562,7 +623,8 @@
     </section>
 
     <section class="section">
-      <h2>Chat preview</h2>
+      <div class="section-kicker">Preview chat</div>
+      <h2>The public jar is fake for now. On purpose.</h2>
 
       <p>
         Beetle’s public chat is currently a preview page, not the finished chemistry brain. It shows
@@ -577,7 +639,7 @@
       </p>
 
       <div class="chat-callout">
-        <h3>Preview the jar 🫧</h3>
+        <h3>Open the preview jar 🫧</h3>
         <p>
           The beetle is present. The lab coat is still being tailored. You can poke the preview,
           but the real chemistry brain is not publicly connected yet.
@@ -588,7 +650,8 @@
     </section>
 
     <section class="section">
-      <h2>Boundaries</h2>
+      <div class="section-kicker">Boundaries</div>
+      <h2>Not a bad idea generator.</h2>
 
       <p>
         Beetle is not a homework vending machine, a drug synthesis assistant, a pyrotechnics
@@ -602,8 +665,9 @@
       </p>
     </section>
 
-    <section class="section">
-      <h2>Current status</h2>
+    <section class="section" id="status">
+      <div class="section-kicker">Current status</div>
+      <h2>Alive. Under the leaf.</h2>
 
       <p>
         Beetle is still in development. The real chemistry brain is being tested separately with
