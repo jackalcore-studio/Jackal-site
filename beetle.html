@@ -1,126 +1,254 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Beetle: an approachable chemistry learning companion from Jackalcore.">
-  <title>BEETLE — Jackalcore</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beetle — Jackalcore</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #eaf7ef;
+      color: #183024;
+      font-family: Arial, sans-serif;
+    }
+
+    .beetle-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(102, 185, 126, 0.35), transparent 35%),
+        linear-gradient(135deg, #eaf7ef 0%, #d7f0e0 45%, #f7fff9 100%);
+    }
+
+    .beetle-shell {
+      width: min(1050px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    .beetle-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .beetle-nav a {
+      color: #24583a;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .beetle-hero {
+      background: rgba(255, 255, 255, 0.75);
+      border: 2px solid rgba(46, 117, 74, 0.2);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(22, 73, 44, 0.12);
+    }
+
+    .beetle-kicker {
+      color: #4f8c35;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 0.9;
+      margin: 0 0 16px;
+      color: #12351f;
+    }
+
+    .beetle-copy {
+      max-width: 680px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #31513d;
+    }
+
+    .chat-card {
+      margin-top: 28px;
+      background: #f9fff9;
+      border: 2px solid rgba(46, 117, 74, 0.22);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7);
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #24583a;
+      color: #f7fff9;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .chat-log {
+      min-height: 340px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .message {
+      max-width: 76%;
+      padding: 16px 18px;
+      border-radius: 18px;
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+
+    .message.beetle {
+      align-self: flex-start;
+      background: #e1f3d5;
+      border: 1px solid rgba(46, 117, 74, 0.25);
+      color: #1d3f2a;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: #2f7b4d;
+      color: #ffffff;
+    }
+
+    .speaker {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .chat-controls {
+      display: flex;
+      gap: 12px;
+      padding: 18px;
+      border-top: 1px solid rgba(46, 117, 74, 0.18);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    input {
+      flex: 1;
+      border: 2px solid rgba(46, 117, 74, 0.22);
+      border-radius: 14px;
+      padding: 15px 16px;
+      font-size: 1rem;
+      color: #183024;
+      background: #ffffff;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 0 22px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #f2c94c;
+      color: #183024;
+      cursor: pointer;
+    }
+
+    .beetle-note {
+      margin-top: 18px;
+      color: #4e6857;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
 </head>
-<body class="creature-page beetle-page">
-  <header class="site-header">
-    <div class="site-shell header-inner">
-      <a class="brand" href="index.html"><span class="brand-mark">✦</span>JACKALCORE</a>
-      <nav class="page-nav" aria-label="Primary navigation">
-        <a href="index.html">Jackalcore</a>
-        <a href="jackal.html">Jackal</a>
-        <a href="beetle.html" aria-current="page">Beetle</a>
-        <a href="hyena.html">Hyena</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="creature-main">
-    <section class="creature-hero">
-      <div class="site-shell creature-hero-grid">
-        <div>
-          <p class="kicker">Chemistry companion / incubating</p>
-          <h1 class="creature-title">Beetle</h1>
-          <p class="creature-subline">Pruinescence.</p>
-          <p class="hero-copy">Pruinescence is the soft, powdery bloom that lets a blue death-feigning beetle wear blue like it was manufactured for it. A tiny waxy surface catches light and turns an insect into something halfway between a desert pebble and a scrap of sky.</p>
-          <p class="hero-copy">Confused? Beetle will help.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#demo">See Beetle explain it</a>
-            <a class="button secondary" href="#lab-status">Check the lab status</a>
+<body class="beetle-page">
+  <main class="beetle-shell">
+    <nav class="beetle-nav">
+      <a href="index.html">← Jackalcore</a>
+      <a href="chat.html">Jackal’s Den</a>
+    </nav>
+
+    <section class="beetle-hero">
+      <div class="beetle-kicker">Chemistry creature in development</div>
+      <h1>Beetle</h1>
+      <p class="beetle-copy">
+        Beetle is being built as a chemistry-focused AI: part tutor, part lookup tool,
+        part tiny lab assistant that refuses to pretend chemistry is simple when it is not.
+      </p>
+
+      <section class="chat-card">
+        <div class="chat-header">
+          <span>Beetle preview</span>
+          <span>Not connected yet</span>
+        </div>
+
+        <div class="chat-log" id="chatLog">
+          <div class="message beetle">
+            <span class="speaker">Beetle</span>
+            Ask me something chemistry-shaped. I am not fully awake yet, but I can rattle around in the jar.
           </div>
         </div>
-        <aside class="creature-art-habitat" aria-label="Placeholder for Beetle art">
-          <!-- Later: replace this with Beetle art or a blue death-feigning beetle illustration. -->
-          <span class="art-habitat-note">Lab habitat / art pending</span>
-          <p class="art-habitat-detail">pruinescence study</p>
-        </aside>
-      </div>
-    </section>
 
-    <section class="page-section" id="demo">
-      <div class="site-shell">
-        <div class="section-heading">
-          <p class="kicker">Tiny lab demonstration</p>
-          <h2>Complicated thing. Less complicated answer.</h2>
-        </div>
-        <article class="content-card full">
-          <div class="demo-chat">
-            <div class="chat-message"><strong>You</strong><span>How does pruinescence work?</span></div>
-            <div class="chat-message"><strong>Beetle</strong><span>It is a waxy surface bloom that changes how light scatters across the beetle’s body, which is why it looks dusty blue instead of merely brown. The effect can weaken when the surface gets wet, because water changes the optical trick. Nature made a mood ring and called it a beetle.</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
+        <form class="chat-controls" id="beetleForm">
+          <input id="beetleInput" autocomplete="off" placeholder="Ask about caffeine, chlorine, beetles, or chemical nonsense..." />
+          <button type="submit">Send</button>
+        </form>
+      </section>
 
-    <section class="page-section">
-      <div class="site-shell">
-        <div class="section-heading">
-          <p class="kicker">Mission</p>
-          <h2>A tiny lab overseer that meets you where you are.</h2>
-          <p>Beetle is built to make one of STEM’s most intimidating subjects feel less locked behind jargon, gatekeeping, and people who assume you were born knowing what a mole is.</p>
-        </div>
-        <div class="content-grid">
-          <article class="content-card">
-            <p class="small-label">Beetle can help with</p>
-            <ul>
-              <li>Compounds and what they are made of.</li>
-              <li>Reactions and high-level explanations of what may happen.</li>
-              <li>Equations, concepts, and common chemistry confusion.</li>
-              <li>Low-risk, small-scale chemistry learning at home.</li>
-              <li>Explaining the why, not just supplying the result.</li>
-            </ul>
-          </article>
-          <article class="content-card">
-            <p class="small-label">Beetle is not designed for</p>
-            <ul>
-              <li>Pharmaceuticals or drug-related instruction.</li>
-              <li>Energetics, explosives, or pyrotechnic formulation.</li>
-              <li>Risky household chemical mixing.</li>
-              <li>Instructions that turn a kitchen into a bad incident report.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="page-section" id="lab-status">
-      <div class="site-shell">
-        <div class="section-heading">
-          <p class="kicker">Lab status</p>
-          <h2>Growing carefully.</h2>
-        </div>
-        <div class="content-grid">
-          <article class="content-card">
-            <p class="small-label">In the lab now</p>
-            <p>Local chemistry chat, explanation-first teaching, and a framework that adjusts to the level a person is actually at.</p>
-          </article>
-          <article class="content-card">
-            <p class="small-label">Growing next</p>
-            <p>Source-backed compound information, PubChem integration, clearer hazard context, diagrams, and reaction visuals.</p>
-          </article>
-          <article class="content-card full">
-            <p class="small-label">Future experiments</p>
-            <p>Professor and lab discovery tools, richer learning pathways, and more ways to follow a question until it becomes interesting instead of terrifying.</p>
-          </article>
-        </div>
-        <p class="page-note">Success for Beetle is not “gave an answer.” Success is someone understanding chemistry better than they did ten minutes ago.</p>
-      </div>
+      <p class="beetle-note">
+        Public demo only. Real Beetle is still being assembled under a rock somewhere.
+      </p>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-shell footer-inner">
-      <div>
-        <p class="footer-signoff">Built by snickerdoodles.</p>
-        <p class="footer-note">Beetle does not currently have a lab coat. This is being addressed.</p>
-      </div>
-      <p class="footer-mini">Jackalcore / creature 02</p>
-    </div>
-  </footer>
+  <script>
+    const facts = [
+      "Not fully developed. Did you know blue death-feigning beetles play possum when threatened?",
+      "Try again later. Did you know rhino beetles can spend most of their lives as larvae?",
+      "Still under construction. Did you know bombardier beetles can spray hot defensive chemicals?",
+      "Beetle is not awake yet. Did you know ladybugs are beetles, not bugs in the true-bug sense?",
+      "Chemistry brain loading. Did you know some beetles produce incredibly shiny structural colors without pigment?"
+    ];
+
+    const form = document.getElementById("beetleForm");
+    const input = document.getElementById("beetleInput");
+    const chatLog = document.getElementById("chatLog");
+
+    function addMessage(kind, text) {
+      const bubble = document.createElement("div");
+      bubble.className = `message ${kind}`;
+      bubble.innerHTML = `<span class="speaker">${kind === "user" ? "You" : "Beetle"}</span>${text}`;
+      chatLog.appendChild(bubble);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage("user", text);
+      input.value = "";
+
+      const reply = facts[Math.floor(Math.random() * facts.length)];
+
+      setTimeout(() => {
+        addMessage("beetle", reply);
+      }, 350);
+    });
+  </script>
 </body>
 </html>
