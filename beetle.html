@@ -9,92 +9,118 @@
   <style>
     body {
       margin: 0;
-      background: #061421;
-      color: #e9fbff;
+      background: #071522;
+      color: #edfaff;
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
 
-    .beetle-overview {
+    .creature-page.beetle-page {
       min-height: 100vh;
       position: relative;
       background:
-        radial-gradient(circle at 12% 18%, rgba(84, 203, 216, 0.22), transparent 28%),
-        radial-gradient(circle at 88% 12%, rgba(108, 160, 255, 0.20), transparent 26%),
-        radial-gradient(circle at 70% 86%, rgba(89, 220, 164, 0.16), transparent 28%),
-        linear-gradient(135deg, #061421 0%, #0b2134 45%, #071827 100%);
+        radial-gradient(circle at 12% 16%, rgba(91, 210, 226, 0.20), transparent 26%),
+        radial-gradient(circle at 86% 10%, rgba(118, 169, 255, 0.17), transparent 24%),
+        radial-gradient(circle at 70% 88%, rgba(126, 232, 209, 0.14), transparent 28%),
+        linear-gradient(135deg, #06111d 0%, #0b2236 48%, #071827 100%);
     }
 
-    .bubble {
+    .beetle-bubble {
       position: absolute;
-      border: 1px solid rgba(184, 244, 255, 0.28);
       border-radius: 999px;
-      background: rgba(184, 244, 255, 0.05);
-      box-shadow: 0 0 30px rgba(110, 220, 240, 0.08);
+      border: 1px solid rgba(190, 247, 255, 0.28);
+      background: rgba(190, 247, 255, 0.055);
+      box-shadow: 0 0 26px rgba(126, 232, 209, 0.08);
       pointer-events: none;
+      z-index: 0;
     }
 
-    .bubble.one { width: 90px; height: 90px; left: 7%; top: 18%; }
-    .bubble.two { width: 42px; height: 42px; right: 14%; top: 21%; }
-    .bubble.three { width: 130px; height: 130px; right: 8%; bottom: 12%; }
-    .bubble.four { width: 56px; height: 56px; left: 16%; bottom: 18%; }
-    .bubble.five { width: 34px; height: 34px; left: 48%; top: 9%; }
-    .bubble.six { width: 76px; height: 76px; right: 30%; bottom: 7%; }
+    .beetle-bubble.one {
+      width: 86px;
+      height: 86px;
+      left: 6%;
+      top: 18%;
+    }
 
-    .emoji-corner {
+    .beetle-bubble.two {
+      width: 42px;
+      height: 42px;
+      right: 12%;
+      top: 22%;
+    }
+
+    .beetle-bubble.three {
+      width: 118px;
+      height: 118px;
+      right: 8%;
+      bottom: 12%;
+    }
+
+    .beetle-bubble.four {
+      width: 54px;
+      height: 54px;
+      left: 15%;
+      bottom: 17%;
+    }
+
+    .beetle-emoji {
       position: absolute;
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      opacity: 0.55;
-      filter: drop-shadow(0 0 18px rgba(102, 221, 238, 0.2));
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      opacity: 0.48;
+      filter: drop-shadow(0 0 18px rgba(126, 232, 209, 0.2));
       pointer-events: none;
+      z-index: 0;
     }
 
-    .emoji-corner.left { left: 34px; bottom: 38px; }
-    .emoji-corner.right { right: 38px; top: 38px; }
+    .beetle-emoji.flask {
+      right: 38px;
+      top: 38px;
+    }
 
-    .beetle-shell {
+    .beetle-emoji.bubbles {
+      left: 34px;
+      bottom: 38px;
+    }
+
+    .creature-shell {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 42px 0 70px;
+      padding: 42px 0 72px;
       position: relative;
       z-index: 1;
     }
 
-    .beetle-nav {
+    .creature-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 38px;
+      gap: 18px;
+      margin-bottom: 34px;
       font-size: 0.85rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      font-weight: 800;
+      font-weight: 900;
     }
 
-    .beetle-nav a {
+    .creature-nav a {
       color: #a8f4ff;
       text-decoration: none;
     }
 
-    .beetle-hero,
-    .section-card {
+    .creature-hero {
       border: 1px solid rgba(168, 244, 255, 0.18);
       border-radius: 34px;
-      background:
-        linear-gradient(135deg, rgba(10, 37, 58, 0.86), rgba(9, 27, 44, 0.92));
-      box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.38),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(10px);
-    }
-
-    .beetle-hero {
       padding: clamp(30px, 6vw, 62px);
       margin-bottom: 22px;
+      background:
+        linear-gradient(135deg, rgba(10, 37, 58, 0.88), rgba(8, 28, 45, 0.94));
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.36),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
     }
 
-    .beetle-kicker {
-      color: #72e7c6;
+    .creature-kicker {
+      color: #7ee8d1;
       font-size: 0.82rem;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -102,30 +128,30 @@
       margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: clamp(4rem, 12vw, 8.5rem);
+    .creature-title {
+      font-size: clamp(4.2rem, 13vw, 9rem);
       line-height: 0.85;
       margin: 0 0 22px;
       color: #f2feff;
-      letter-spacing: -0.06em;
+      letter-spacing: -0.065em;
     }
 
-    .intro {
-      max-width: 820px;
+    .creature-intro {
+      max-width: 850px;
+      color: #c9e8ef;
       font-size: clamp(1.08rem, 2vw, 1.28rem);
       line-height: 1.75;
-      color: #c9e8ef;
-      margin-bottom: 28px;
+      margin: 0 0 18px;
     }
 
-    .button-row {
+    .creature-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 32px;
     }
 
-    .button {
+    .creature-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -139,91 +165,123 @@
       font-size: 0.82rem;
     }
 
-    .button.primary {
+    .creature-button.primary {
       background: #7ee8d1;
       color: #061421;
       box-shadow: 0 12px 30px rgba(126, 232, 209, 0.18);
     }
 
-    .button.secondary {
+    .creature-button.secondary {
       border: 1px solid rgba(168, 244, 255, 0.28);
       color: #d7fbff;
       background: rgba(255, 255, 255, 0.04);
     }
 
-    .section-card {
-      padding: clamp(24px, 4vw, 38px);
+    .creature-section {
+      border: 1px solid rgba(168, 244, 255, 0.16);
+      border-radius: 30px;
+      padding: clamp(24px, 4vw, 40px);
       margin-bottom: 22px;
+      background:
+        linear-gradient(135deg, rgba(7, 29, 47, 0.82), rgba(5, 22, 36, 0.9));
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.24),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
     }
 
-    .section-card h2 {
+    .creature-section h2 {
       margin: 0 0 14px;
       color: #f4feff;
-      font-size: clamp(1.7rem, 4vw, 2.7rem);
-      letter-spacing: -0.035em;
+      font-size: clamp(1.75rem, 4vw, 2.8rem);
+      letter-spacing: -0.04em;
     }
 
-    .section-card p {
+    .creature-section p {
       color: #c7e4ea;
       line-height: 1.72;
       font-size: 1.03rem;
-      max-width: 880px;
+      max-width: 900px;
+      margin: 0 0 16px;
     }
 
-    .overview-grid {
+    .creature-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .creature-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 22px;
     }
 
-    .overview-box {
-      border: 1px solid rgba(168, 244, 255, 0.16);
+    .creature-mini-card {
+      border: 1px solid rgba(168, 244, 255, 0.15);
       border-radius: 24px;
       padding: 22px;
       background: rgba(4, 19, 31, 0.48);
     }
 
-    .overview-box h3 {
+    .creature-mini-card h3 {
       margin: 0 0 10px;
       color: #f3feff;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
     }
 
-    .overview-box p {
+    .creature-mini-card p {
       margin: 0;
       color: #bfdde5;
       line-height: 1.65;
       font-size: 0.97rem;
     }
 
-    .feature-list {
+    .creature-list {
       display: grid;
       gap: 14px;
       margin-top: 22px;
     }
 
-    .feature {
+    .creature-list-item {
       border: 1px solid rgba(168, 244, 255, 0.14);
       border-radius: 22px;
       padding: 18px 20px;
       background: rgba(255, 255, 255, 0.035);
     }
 
-    .feature strong {
+    .creature-list-item strong {
       display: block;
       color: #8df2dd;
       margin-bottom: 6px;
       letter-spacing: 0.04em;
     }
 
-    .feature span {
+    .creature-list-item span {
       color: #c8e6eb;
       line-height: 1.65;
     }
 
+    .chat-preview-callout {
+      margin-top: 22px;
+      border: 1px solid rgba(126, 232, 209, 0.24);
+      border-radius: 26px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(126, 232, 209, 0.12), transparent 34%),
+        rgba(126, 232, 209, 0.06);
+    }
+
+    .chat-preview-callout h3 {
+      margin: 0 0 10px;
+      color: #f3feff;
+      font-size: 1.28rem;
+    }
+
+    .chat-preview-callout p {
+      margin-bottom: 18px;
+    }
+
     .lab-note {
-      margin-top: 24px;
+      margin-top: 20px;
       padding: 20px 22px;
       border-left: 4px solid #7ee8d1;
       border-radius: 18px;
@@ -233,12 +291,11 @@
     }
 
     @media (max-width: 820px) {
-      .overview-grid {
+      .creature-grid {
         grid-template-columns: 1fr;
       }
 
-      .beetle-nav {
-        gap: 16px;
+      .creature-nav {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -246,152 +303,192 @@
   </style>
 </head>
 
-<body class="beetle-overview">
-  <div class="bubble one"></div>
-  <div class="bubble two"></div>
-  <div class="bubble three"></div>
-  <div class="bubble four"></div>
-  <div class="bubble five"></div>
-  <div class="bubble six"></div>
-  <div class="emoji-corner left">🫧</div>
-  <div class="emoji-corner right">⚗️</div>
+<body class="creature-page beetle-page">
+  <div class="beetle-bubble one"></div>
+  <div class="beetle-bubble two"></div>
+  <div class="beetle-bubble three"></div>
+  <div class="beetle-bubble four"></div>
+  <div class="beetle-emoji flask">⚗️</div>
+  <div class="beetle-emoji bubbles">🫧</div>
 
-  <main class="beetle-shell">
-    <nav class="beetle-nav">
+  <main class="creature-shell">
+    <nav class="creature-nav">
       <a href="index.html">← Jackalcore</a>
       <a href="beetle-chat.html">Preview chat →</a>
     </nav>
 
-    <section class="beetle-hero">
-      <div class="beetle-kicker">Chemistry creature in development</div>
-      <h1>Beetle</h1>
+    <section class="creature-hero">
+      <div class="creature-kicker">Chemistry creature in development</div>
+      <h1 class="creature-title">Beetle</h1>
 
-      <p class="intro">
+      <p class="creature-intro">
         Beetle is a chemistry-focused AI being built to make one of the hardest STEM fields
         feel less like a locked cabinet full of unlabeled glassware. It is part tutor, part
         lookup tool, and part tiny lab creature that knows when to say, “that depends.”
       </p>
 
-      <p class="intro">
-        The goal is not to make chemistry look simple. The goal is to make chemistry
-        approachable without flattening it into lies. Beetle should be able to explain a
-        compound to a beginner, talk through structure and bonding with an intermediate learner,
-        and stop wasting time when the user clearly already knows the basics.
+      <p class="creature-intro">
+        The goal is not to make chemistry look simple. The goal is to make chemistry approachable
+        without flattening it into lies. Beetle should help users understand what they are looking
+        at, what information is missing, and why the answer changes when the chemistry changes.
       </p>
 
-      <div class="button-row">
-        <a class="button primary" href="beetle-chat.html">Open preview chat</a>
-        <a class="button secondary" href="index.html">Back to creatures</a>
+      <div class="creature-actions">
+        <a class="creature-button primary" href="beetle-chat.html">Open chat preview</a>
+        <a class="creature-button secondary" href="index.html">Back to creatures</a>
       </div>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle is for</h2>
+    <section class="creature-section">
+      <h2>What Beetle is</h2>
+
       <p>
-        Beetle is being designed as a chemistry helper with a spine. It should help users
-        understand formulas, structures, bonding, solubility, oxidation states, periodic trends,
-        reaction plausibility, and the annoying little condition-dependent details that make
-        chemistry chemistry.
+        Beetle is being designed as a chemistry helper with a spine. It should be able to explain
+        formulas, structures, bonding, solubility, oxidation states, periodic trends, reaction
+        plausibility, and the annoying condition-dependent details that make chemistry chemistry.
       </p>
 
       <p>
-        A lot of AI tools answer chemistry questions with confident mush. Beetle’s job is to
-        be slower, clearer, and less willing to hallucinate a compound into existence just
-        because the user typed something that sounded science-flavored.
+        A lot of AI tools answer chemistry questions with confident mush. Beetle’s job is to be
+        slower, clearer, and less willing to hallucinate a compound into existence just because
+        the user typed something that sounded science-flavored.
       </p>
 
-      <div class="overview-grid">
-        <article class="overview-box">
-          <h3>Source-backed lookup</h3>
+      <p>
+        It should help beginners without babying them, help advanced users without wasting their
+        time, and admit when a question needs more context instead of pretending every reaction
+        happens in a clean little cartoon beaker.
+      </p>
+    </section>
+
+    <section class="creature-section">
+      <h2>What Beetle should do</h2>
+
+      <div class="creature-grid">
+        <article class="creature-mini-card">
+          <h3>Look things up</h3>
           <p>
-            Beetle is being wired to check chemical identity data before speaking too loudly.
-            Formula, molecular weight, IUPAC name, SMILES, and other basics should come from
-            actual lookup instead of model vibes.
+            Beetle is being connected to chemical identity data so it can check formula, molecular
+            weight, IUPAC name, identifiers, and structure data before talking too loudly.
           </p>
         </article>
 
-        <article class="overview-box">
-          <h3>Adaptive teaching</h3>
+        <article class="creature-mini-card">
+          <h3>Teach at the right level</h3>
           <p>
-            A beginner should get plain language. An advanced user should get chemistry.
+            A beginner should get plain language. A chemistry student should get chemistry.
             Beetle’s job is to notice the difference and adjust without being condescending.
           </p>
         </article>
 
-        <article class="overview-box">
-          <h3>Conditions matter</h3>
+        <article class="creature-mini-card">
+          <h3>Ask for conditions</h3>
           <p>
-            Concentration, solvent, temperature, structure, oxidation state, and physical form
-            can change the answer. Beetle is allowed to be annoying about that. Lovingly.
+            Solvent, concentration, temperature, oxidation state, structure, and physical form can
+            all change the answer. Beetle is allowed to be annoying about that. Lovingly.
           </p>
         </article>
       </div>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle should be good at</h2>
+    <section class="creature-section">
+      <h2>The chemistry problem</h2>
 
-      <div class="feature-list">
-        <div class="feature">
-          <strong>Compound identity</strong>
+      <p>
+        Chemistry is one of those subjects where a small missing detail can completely change the
+        answer. “What happens when these react?” is not always one question. It might be ten
+        questions wearing a lab coat.
+      </p>
+
+      <p>
+        Beetle is being built around that reality. Instead of pretending every question has one
+        neat answer, it should help the user identify what kind of chemical question they are
+        actually asking: identity, structure, bonding, safety, mechanism, plausibility, or
+        conditions.
+      </p>
+
+      <div class="creature-list">
+        <div class="creature-list-item">
+          <strong>Identity before explanation</strong>
           <span>
-            Looking up what a chemical is before explaining it: formula, mass, names, identifiers,
-            and structural representations when available.
+            First, figure out what the compound actually is. Formula, mass, names, and identifiers
+            matter before the model starts improvising like a haunted textbook.
           </span>
         </div>
 
-        <div class="feature">
-          <strong>Level-matched explanations</strong>
+        <div class="creature-list-item">
+          <strong>Concept before paragraph</strong>
           <span>
-            Explaining chlorine differently to a middle-school student, a high-school student,
-            a first-year chemistry student, and someone who casually says “ligand field splitting.”
+            Beetle should teach the idea, not just generate a polished answer. A good explanation
+            should leave the user with a better mental model.
           </span>
         </div>
 
-        <div class="feature">
-          <strong>Reaction plausibility</strong>
+        <div class="creature-list-item">
+          <strong>Context before confidence</strong>
           <span>
-            Talking through whether a reaction makes chemical sense, what factors matter, and
-            what information is missing before pretending there is one universal answer.
-          </span>
-        </div>
-
-        <div class="feature">
-          <strong>Concept repair</strong>
-          <span>
-            Helping users untangle misconceptions without making them feel stupid for asking.
-            Chemistry is already rude enough on its own.
+            If the answer depends on conditions, Beetle should say so. Chemistry does not care
+            that the user wanted a simple answer.
           </span>
         </div>
       </div>
     </section>
 
-    <section class="section-card">
-      <h2>What Beetle is not</h2>
+    <section class="creature-section">
+      <h2>About the chat preview</h2>
+
       <p>
-        Beetle is not meant to be a homework vending machine, a drug synthesis assistant, a
-        pyrotechnics cookbook, or a creature that tells people to mix random household chemicals
-        because the internet got bored. It can explain risk, identity, structure, and theory.
-        It should not hand people a dangerous procedure wrapped in a cute interface.
+        Beetle’s public chat is currently a preview page, not the finished chemistry brain.
+        It shows what the interface will feel like while the real Beetle is still being tested
+        separately in development.
       </p>
 
       <p>
-        It also is not meant to replace actual thought. Beetle should help users build a mental
-        model, not just hand them a polished paragraph and call that learning.
+        For now, the preview chat gives placeholder responses and beetle facts. Later, it is meant
+        to connect to the actual chemistry system: source-backed lookup, adaptive explanations,
+        and enough caution to avoid turning chemistry help into a bad idea generator.
+      </p>
+
+      <div class="chat-preview-callout">
+        <h3>Preview the jar 🫧</h3>
+        <p>
+          The preview chat is there so visitors can see the future Beetle interface without the
+          real model being publicly connected yet. The beetle is present. The lab coat is still
+          being tailored.
+        </p>
+
+        <a class="creature-button primary" href="beetle-chat.html">Open Beetle chat preview</a>
+      </div>
+    </section>
+
+    <section class="creature-section">
+      <h2>What Beetle is not</h2>
+
+      <p>
+        Beetle is not a homework vending machine, a drug synthesis assistant, a pyrotechnics
+        cookbook, or a creature that tells people to mix random household chemicals because the
+        internet got bored. It can explain risk, identity, structure, and theory. It should not
+        hand people a dangerous procedure wrapped in a cute interface.
+      </p>
+
+      <p>
+        It is also not meant to replace actual thought. Beetle should help users build a mental
+        model, not hand them a paragraph-shaped trophy and call that learning.
       </p>
     </section>
 
-    <section class="section-card">
+    <section class="creature-section">
       <h2>Current status</h2>
+
       <p>
-        Beetle is still in development. The public chat page is only a preview for now, while
-        the real chemistry brain is being tested separately with PubChem lookup and local model
-        reasoning. The current focus is making Beetle better at identifying compounds, asking
-        for missing chemical context, and adapting to how much chemistry the user actually knows.
+        Beetle is still in development. The real chemistry brain is being tested separately with
+        PubChem lookup and local model reasoning. The current focus is making Beetle better at
+        identifying compounds, asking for missing chemical context, and adapting to how much
+        chemistry the user actually knows.
       </p>
 
       <p class="lab-note">
-        Translation: the beetle is alive, but still under the leaf. Do not tap the glass too hard.
+        Translation: the beetle is alive, but still under the leaf. Do not tap the glass too hard. ⚗️
       </p>
     </section>
   </main>
