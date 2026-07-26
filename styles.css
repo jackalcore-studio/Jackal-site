@@ -373,3 +373,88 @@ body.home-page,
   background: rgba(28, 14, 37, 0.86) !important;
   border-color: rgba(255, 116, 186, 0.22) !important;
 }
+
+/* Homepage bridge to the separate CWD science-communication project */
+
+.deer-bridge {
+  padding-top: 1rem;
+}
+
+.deer-bridge-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 2.7rem);
+  border: 1px solid #77735c;
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(39, 48, 34, 0.96),
+      rgba(25, 31, 24, 0.96)
+    );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.deer-bridge-card:hover {
+  transform: translateY(-3px);
+  border-color: #c8be83;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.deer-bridge-copy {
+  max-width: 760px;
+}
+
+.deer-bridge-copy .kicker {
+  color: #d8cb86;
+}
+
+.deer-bridge-copy h2 {
+  margin: 0;
+  color: #fffbea;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.deer-bridge-copy p {
+  margin: 0.85rem 0 0;
+  color: #e1dfce;
+}
+
+.deer-bridge-copy .deer-bridge-lead {
+  color: #fffbea;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.deer-bridge-link {
+  padding: 0.75rem 0;
+  color: #eee2a3;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 590px) {
+  .deer-bridge-card {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .deer-bridge-link {
+    padding-bottom: 0;
+    white-space: normal;
+  }
+}
