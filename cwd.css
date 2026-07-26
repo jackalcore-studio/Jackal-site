@@ -1,0 +1,460 @@
+@import url("deer.css");
+
+.cwd-hero {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0 4rem;
+}
+
+.cwd-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.cwd-hero h1 {
+  margin: 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(5rem, 16vw, 11rem);
+  line-height: 0.75;
+  letter-spacing: -0.08em;
+}
+
+.cwd-full-name {
+  margin: 1.2rem 0 0;
+  color: var(--forest-moss);
+  font-family: "DM Mono", monospace;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cwd-opening {
+  max-width: 720px;
+  margin: 1rem 0 0;
+  color: var(--forest-muted);
+}
+
+.cwd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.cwd-specimen-window {
+  position: relative;
+  display: grid;
+  min-height: 410px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--forest-line);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at center, rgba(157, 186, 117, 0.16), transparent 11rem),
+    var(--forest-deep);
+  box-shadow:
+    inset 0 0 0 7px #0a1b13,
+    0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+.cwd-specimen-window::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px dashed rgba(214, 194, 122, 0.35);
+  border-radius: 0.8rem;
+}
+
+.specimen-label {
+  position: absolute;
+  top: 1.7rem;
+  left: 2rem;
+  color: var(--forest-gold);
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.specimen-brain {
+  position: absolute;
+  top: 4.5rem;
+  font-size: 5rem;
+}
+
+.specimen-arrow {
+  position: absolute;
+  top: 10rem;
+  color: var(--forest-gold);
+  font-size: 3rem;
+}
+
+.specimen-deer {
+  position: absolute;
+  bottom: 5.8rem;
+  z-index: 2;
+  font-size: 7rem;
+}
+
+.specimen-trees {
+  position: absolute;
+  bottom: 2.2rem;
+  font-size: 3.2rem;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.cwd-specimen-window p {
+  position: absolute;
+  right: 2rem;
+  bottom: 1.3rem;
+  z-index: 3;
+  margin: 0;
+  color: var(--forest-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.cwd-section {
+  padding: 4.5rem 0;
+}
+
+.explanation-card,
+.state-card,
+.human-note {
+  padding: clamp(1.4rem, 4vw, 2.7rem);
+  border: 1px solid var(--forest-line);
+  border-radius: 1.2rem;
+  background: var(--forest-panel);
+}
+
+.major-card {
+  background:
+    linear-gradient(135deg, var(--forest-panel), var(--forest-deep));
+}
+
+.explanation-card h2,
+.state-card h2,
+.human-note h2 {
+  margin: 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.explanation-card h3 {
+  margin: 0.5rem 0 0.8rem;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+
+.explanation-card p,
+.state-card p,
+.human-note p {
+  color: var(--forest-muted);
+}
+
+.two-column-copy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+.two-column-copy p {
+  margin: 0;
+}
+
+.two-column-copy p + p {
+  margin-top: 1rem;
+}
+
+.plain-box {
+  margin-top: 1.6rem;
+  padding: 1.1rem 1.2rem;
+  border-left: 4px solid var(--forest-gold);
+  background: rgba(214, 194, 122, 0.09);
+}
+
+.plain-box.compact {
+  margin-top: auto;
+}
+
+.plain-label {
+  display: block;
+  color: var(--forest-gold);
+  font-family: "DM Mono", monospace;
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plain-box p {
+  margin: 0.35rem 0 0;
+  color: var(--forest-cream);
+}
+
+.prion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.prion-grid .explanation-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-icon {
+  font-size: 2.7rem;
+}
+
+.card-number {
+  margin: 1rem 0 0 !important;
+  color: var(--forest-gold) !important;
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.process-strip {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 0.7rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--forest-line);
+  border-radius: 1rem;
+  background: var(--forest-deep);
+}
+
+.process-strip div {
+  display: grid;
+  gap: 0.4rem;
+  min-height: 105px;
+  place-items: center;
+  padding: 0.8rem;
+  border: 1px solid rgba(157, 186, 117, 0.24);
+  border-radius: 0.7rem;
+  text-align: center;
+}
+
+.process-strip span {
+  font-size: 1.8rem;
+}
+
+.process-strip strong {
+  color: var(--forest-muted);
+  font-size: 0.77rem;
+}
+
+.process-strip b {
+  color: var(--forest-gold);
+}
+
+.state-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 2rem;
+  background:
+    linear-gradient(135deg, #183624, #0d2318);
+}
+
+.state-card p {
+  margin: 1rem 0 0;
+}
+
+.state-links {
+  display: grid;
+  gap: 0.7rem;
+  align-content: center;
+}
+
+.resource-button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(214, 194, 122, 0.34);
+  border-radius: 0.8rem;
+  background: rgba(7, 19, 14, 0.55);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.resource-button:hover {
+  transform: translateX(3px);
+  border-color: var(--forest-gold);
+}
+
+.resource-button > span:first-child {
+  font-size: 1.6rem;
+}
+
+.resource-button strong {
+  display: block;
+  color: var(--forest-cream);
+  font-size: 0.85rem;
+}
+
+.resource-button span span {
+  display: block;
+  color: var(--forest-muted);
+  font-size: 0.72rem;
+}
+
+.animal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1rem;
+}
+
+.cwd-host-card {
+  background:
+    linear-gradient(135deg, #1b3925, #142c1d);
+}
+
+.animal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+}
+
+.animal-tags span {
+  padding: 0.38rem 0.62rem;
+  border: 1px solid rgba(214, 194, 122, 0.3);
+  border-radius: 999px;
+  background: rgba(7, 19, 14, 0.45);
+  color: var(--forest-cream);
+  font-size: 0.73rem;
+}
+
+.small-note {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(157, 186, 117, 0.25);
+  font-size: 0.84rem;
+}
+
+.human-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.4rem;
+  background:
+    linear-gradient(135deg, #2e341d, #15261a);
+}
+
+.human-note-icon {
+  padding-top: 0.3rem;
+  font-size: 3rem;
+}
+
+.human-note p {
+  margin: 0.9rem 0 0;
+}
+
+.sources-section {
+  padding-bottom: 5.5rem;
+}
+
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.source-grid a {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--forest-line);
+  border-radius: 0.8rem;
+  background: var(--forest-deep);
+  color: var(--forest-muted);
+  font-size: 0.77rem;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.source-grid a:hover {
+  transform: translateY(-2px);
+  border-color: var(--forest-gold);
+}
+
+.source-grid strong {
+  color: var(--forest-gold);
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 850px) {
+  .cwd-hero-grid,
+  .state-card,
+  .animal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cwd-specimen-window {
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .process-strip b {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .two-column-copy,
+  .prion-grid,
+  .source-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cwd-hero {
+    padding-top: 4rem;
+  }
+
+  .cwd-section {
+    padding: 3.6rem 0;
+  }
+
+  .cwd-specimen-window {
+    min-height: 340px;
+  }
+
+  .specimen-deer {
+    font-size: 5.8rem;
+  }
+
+  .specimen-trees {
+    font-size: 2.5rem;
+  }
+
+  .human-note {
+    grid-template-columns: 1fr;
+  }
+
+  .human-note-icon {
+    padding: 0;
+  }
+}
