@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --forest-bg: #07130e;
+  --forest-deep: #0c2117;
+  --forest-panel: #123021;
+  --forest-panel-light: #183c2a;
+  --forest-line: #3c6a4d;
+  --forest-cream: #f3f0d7;
+  --forest-muted: #cbd8c7;
+  --forest-moss: #9dba75;
+  --forest-gold: #d6c27a;
+  --forest-rust: #c88354;
+  --max-width: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--forest-cream);
+  background:
+    radial-gradient(circle at top right, rgba(42, 83, 57, 0.23), transparent 34rem),
+    var(--forest-bg);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--forest-gold);
+  outline-offset: 4px;
+}
+
+.deer-shell {
+  width: min(var(--max-width), calc(100% - 2.5rem));
+  margin: 0 auto;
+}
+
+.deer-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(214, 194, 122, 0.25);
+  background: rgba(7, 19, 14, 0.95);
+  backdrop-filter: blur(12px);
+}
+
+.deer-header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.deer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--forest-cream);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.deer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.deer-nav a {
+  padding: 0.43rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 0.6rem;
+  color: var(--forest-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  transition: 160ms ease;
+}
+
+.deer-nav a:hover,
+.deer-nav a[aria-current="page"] {
+  color: var(--forest-cream);
+  border-color: var(--forest-gold);
+  background: var(--forest-panel);
+}
+
+.deer-hero {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0 4rem;
+}
+
+.deer-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.deer-kicker {
+  margin: 0 0 0.8rem;
+  color: var(--forest-gold);
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.deer-hero h1 {
+  margin: 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+}
+
+.deer-hero h1 span {
+  color: var(--forest-moss);
+}
+
+.deer-tagline {
+  margin: 1.25rem 0 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-style: italic;
+}
+
+.deer-intro {
+  max-width: 720px;
+  margin: 1.15rem 0 0;
+  color: var(--forest-muted);
+  font-size: 1rem;
+}
+
+.deer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.deer-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--forest-line);
+  border-radius: 0.7rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.deer-button:hover {
+  transform: translateY(-2px);
+}
+
+.deer-button.primary {
+  color: #102016;
+  border-color: transparent;
+  background: var(--forest-gold);
+}
+
+.deer-button.secondary {
+  color: var(--forest-cream);
+  background: var(--forest-panel);
+}
+
+.forest-window {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid var(--forest-line);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(to bottom, #10271d 0%, #173726 50%, #0b1d15 100%);
+  box-shadow:
+    inset 0 0 0 7px #0a1b13,
+    0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+.forest-window::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(214, 194, 122, 0.32);
+  border-radius: 0.8rem;
+}
+
+.forest-sky {
+  position: absolute;
+  top: 2rem;
+  left: 2.2rem;
+  color: var(--forest-gold);
+  font-size: 1.25rem;
+}
+
+.forest-moon {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.3rem;
+  color: var(--forest-cream);
+  font-size: 3.8rem;
+  opacity: 0.85;
+}
+
+.forest-line {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.forest-line-back {
+  bottom: 5.2rem;
+  font-size: 4.2rem;
+  opacity: 0.5;
+}
+
+.forest-line-front {
+  bottom: 0.8rem;
+  font-size: 3.7rem;
+}
+
+.forest-deer {
+  position: absolute;
+  left: 50%;
+  bottom: 3.4rem;
+  z-index: 2;
+  transform: translateX(-50%);
+  font-size: 7.5rem;
+  filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.32));
+}
+
+.forest-caption {
+  position: absolute;
+  top: 1.8rem;
+  left: 2rem;
+  margin: 0;
+  color: var(--forest-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+}
+
+.deer-section {
+  padding: 4.5rem 0;
+}
+
+.mission-card,
+.newsletter-callout {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--forest-line);
+  border-radius: 1.3rem;
+  background:
+    linear-gradient(135deg, var(--forest-panel), var(--forest-deep));
+}
+
+.mission-card h2,
+.section-heading h2,
+.field-card h2,
+.newsletter-callout h2 {
+  margin: 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.mission-grid > div {
+  padding: 1.2rem;
+  border: 1px solid rgba(157, 186, 117, 0.28);
+  border-radius: 0.9rem;
+  background: rgba(7, 19, 14, 0.42);
+}
+
+.mission-grid h3 {
+  margin: 0 0 0.45rem;
+  color: var(--forest-gold);
+  font-size: 0.95rem;
+}
+
+.mission-grid p,
+.section-heading p,
+.path-card p,
+.field-card p,
+.newsletter-callout p {
+  margin: 0;
+  color: var(--forest-muted);
+}
+
+.section-heading {
+  max-width: 770px;
+  margin-bottom: 2rem;
+}
+
+.section-heading p {
+  margin-top: 0.9rem;
+}
+
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.path-card {
+  display: flex;
+  min-height: 310px;
+  flex-direction: column;
+  padding: 1.4rem;
+  border: 1px solid var(--forest-line);
+  border-radius: 1rem;
+  background: var(--forest-panel);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.path-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--forest-gold);
+}
+
+.path-number {
+  margin: 0;
+  color: var(--forest-gold) !important;
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.path-emoji {
+  margin: auto 0 0;
+  padding-top: 1.5rem;
+  font-size: 2.4rem;
+}
+
+.path-card h3 {
+  margin: 0.4rem 0;
+  color: var(--forest-cream);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+}
+
+.path-card a,
+.text-link {
+  align-self: flex-start;
+  margin-top: 1.1rem;
+  color: var(--forest-gold);
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cwd-card {
+  background: #173225;
+}
+
+.preservation-card {
+  background: #1b3722;
+}
+
+.newsletter-card {
+  background: #21311d;
+}
+
+.archive-card {
+  background: #2d2f1a;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field-card {
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid var(--forest-line);
+  border-radius: 1rem;
+  background: var(--forest-deep);
+}
+
+.field-card p {
+  margin-top: 1rem;
+}
+
+.field-status {
+  display: grid;
+  gap: 0.28rem;
+  margin-top: 1.4rem;
+  padding: 0.9rem;
+  border-left: 3px solid var(--forest-rust);
+  background: rgba(200, 131, 84, 0.08);
+}
+
+.field-status span {
+  color: var(--forest-rust);
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.field-status strong {
+  color: var(--forest-cream);
+  font-size: 0.9rem;
+}
+
+.research-list {
+  margin: 1.2rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--forest-muted);
+}
+
+.research-list li + li {
+  margin-top: 0.55rem;
+}
+
+.newsletter-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.newsletter-callout p {
+  max-width: 710px;
+  margin-top: 0.9rem;
+}
+
+.deer-footer {
+  padding: 2.3rem 0 3rem;
+  border-top: 1px solid rgba(214, 194, 122, 0.22);
+  color: var(--forest-muted);
+}
+
+.deer-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.deer-footer p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.footer-title {
+  color: var(--forest-cream);
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.footer-note {
+  text-align: right;
+}
+
+@media (max-width: 850px) {
+  .deer-hero-grid,
+  .newsletter-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .forest-window {
+    max-width: 620px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .deer-shell {
+    width: min(100% - 1.25rem, var(--max-width));
+  }
+
+  .deer-header-inner {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+  }
+
+  .deer-brand {
+    padding-top: 0.3rem;
+    font-size: 0.76rem;
+  }
+
+  .deer-nav {
+    gap: 0.15rem;
+  }
+
+  .deer-nav a {
+    padding: 0.32rem 0.42rem;
+    font-size: 0.59rem;
+  }
+
+  .deer-hero {
+    padding-top: 4rem;
+  }
+
+  .mission-grid,
+  .path-grid,
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .forest-window {
+    min-height: 320px;
+  }
+
+  .forest-deer {
+    font-size: 6rem;
+  }
+
+  .forest-line-back {
+    font-size: 3.4rem;
+  }
+
+  .forest-line-front {
+    font-size: 3rem;
+  }
+
+  .deer-section {
+    padding: 3.6rem 0;
+  }
+
+  .deer-footer-inner {
+    align-items: flex-start;
+  }
+
+  .footer-note {
+    text-align: left;
+  }
+}
