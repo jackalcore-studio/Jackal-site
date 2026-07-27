@@ -276,7 +276,63 @@
       </p>
     </div>
   </footer>
+
+  <div class="welcome-modal" id="welcome-modal" hidden>
+    <div class="welcome-backdrop" data-close-welcome></div>
+
+    <section
+      class="welcome-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="welcome-title"
+    >
+      <button
+        class="welcome-close"
+        type="button"
+        aria-label="Continue as guest"
+        data-close-welcome
+      >
+        ×
+      </button>
+
+      <p class="welcome-kicker">Welcome to the enclosure</p>
+      <div class="welcome-creatures" aria-hidden="true">🦊　🪲　🐾　🦌</div>
+
+      <h2 id="welcome-title">Want to make an account?</h2>
+
+      <p class="welcome-copy">
+        Accounts will eventually keep track of Jackal usage, saved settings,
+        and contributor permissions. You can still look around without one.
+      </p>
+
+      <div class="welcome-actions">
+        <a class="welcome-button welcome-primary" href="account.html?mode=signup">
+          YES!!
+        </a>
+
+        <a class="welcome-button welcome-secondary" href="account.html?mode=signin">
+          SIGN IN
+        </a>
+
+        <button class="welcome-guest" type="button" data-close-welcome>
+          CONTINUE AS GUEST
+        </button>
+      </div>
+
+      <p class="welcome-fine-print">
+        Creating an account means agreeing to the
+        <a
+          href="https://docs.google.com/document/d/13HV2KUpjCFySP0MeqMlp-kGfj_tas7B8wQuE460xZMc/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >privacy policy</a>.
+      </p>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="welcome.js"></script>
+
 </body>
 </html>
-
 
