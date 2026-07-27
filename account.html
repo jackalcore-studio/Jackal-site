@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Create or sign in to a JACKALCORE account."
+  >
+  <title>Account — JACKALCORE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="account.css">
+</head>
+
+<body class="account-page">
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">✦</span>JACKALCORE
+      </a>
+
+      <nav class="page-nav" aria-label="Account navigation">
+        <a href="index.html">Home</a>
+        <a href="faq.html">FAQ</a>
+        <a href="account.html" aria-current="page">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="account-main">
+    <div class="site-shell account-grid">
+      <section class="account-intro">
+        <p class="kicker">Account enclosure</p>
+        <h1>One login.<br><span>Several creatures.</span></h1>
+
+        <p>
+          A JACKALCORE account will be used to regulate chatbot access,
+          remember account-level settings, and eventually allow approved
+          contributors to submit project updates.
+        </p>
+
+        <div class="account-creatures" aria-hidden="true">
+          🦊　🪲　🐾　🦌
+        </div>
+
+        <div class="account-note">
+          <strong>Email confirmation is required.</strong>
+          <span>
+            Check your inbox after signing up before trying to sign in.
+          </span>
+        </div>
+      </section>
+
+      <section class="auth-card" aria-labelledby="auth-heading">
+        <div class="auth-tabs" role="tablist" aria-label="Account options">
+          <button
+            class="auth-tab is-active"
+            id="signup-tab"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="signup-panel"
+            data-auth-tab="signup"
+          >
+            Create account
+          </button>
+
+          <button
+            class="auth-tab"
+            id="signin-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="signin-panel"
+            data-auth-tab="signin"
+          >
+            Sign in
+          </button>
+        </div>
+
+        <div class="auth-status" id="auth-status" aria-live="polite"></div>
+
+        <div
+          class="auth-panel"
+          id="signup-panel"
+          role="tabpanel"
+          aria-labelledby="signup-tab"
+          data-auth-panel="signup"
+        >
+          <p class="kicker">New creature keeper</p>
+          <h2 id="auth-heading">Create your account.</h2>
+
+          <form id="signup-form">
+            <label for="signup-email">Email</label>
+            <input
+              id="signup-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+
+            <label for="signup-password">Password</label>
+            <input
+              id="signup-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+
+            <label for="signup-password-confirm">Confirm password</label>
+            <input
+              id="signup-password-confirm"
+              name="password-confirm"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+
+            <label class="consent-row">
+              <input id="privacy-consent" type="checkbox" required>
+              <span>
+                I have read and agree to the
+                <a
+                  href="https://docs.google.com/document/d/13HV2KUpjCFySP0MeqMlp-kGfj_tas7B8wQuE460xZMc/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >privacy policy</a>.
+              </span>
+            </label>
+
+            <button class="auth-submit" type="submit">
+              Create account
+            </button>
+          </form>
+        </div>
+
+        <div
+          class="auth-panel"
+          id="signin-panel"
+          role="tabpanel"
+          aria-labelledby="signin-tab"
+          data-auth-panel="signin"
+          hidden
+        >
+          <p class="kicker">Returning creature keeper</p>
+          <h2>Sign in.</h2>
+
+          <form id="signin-form">
+            <label for="signin-email">Email</label>
+            <input
+              id="signin-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+
+            <label for="signin-password">Password</label>
+            <input
+              id="signin-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button class="auth-submit" type="submit">
+              Sign in
+            </button>
+          </form>
+
+          <button class="text-button" id="reset-password-button" type="button">
+            Forgot your password?
+          </button>
+        </div>
+
+        <div class="signed-in-panel" id="signed-in-panel" hidden>
+          <p class="kicker">Authenticated creature keeper</p>
+          <h2>You’re signed in.</h2>
+          <p id="signed-in-email"></p>
+
+          <div class="signed-in-actions">
+            <a class="auth-submit" href="index.html">Return home</a>
+            <button class="signout-button" id="signout-button" type="button">
+              Sign out
+            </button>
+          </div>
+        </div>
+
+        <p class="auth-fine-print">
+          Passwords are handled by Supabase Auth. JACKALCORE does not receive a
+          readable copy of your password.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-shell footer-inner">
+      <div>
+        <p class="footer-signoff">JACKALCORE / ACCOUNT</p>
+        <p class="footer-note">Please do not feed your password to Jackal.</p>
+      </div>
+
+      <p class="footer-mini">
+        <a class="footer-link" href="faq.html">FAQ</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="account.js"></script>
+</body>
+</html>
