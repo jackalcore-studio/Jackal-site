@@ -2,7 +2,7 @@
 
 .newsletter-hero{padding:clamp(4.5rem,9vw,7rem) 0 3rem}
 .newsletter-hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(2rem,5vw,4rem);align-items:center}
-.newsletter-hero h1{margin:0;color:var(--forest-cream);font-family:"Playfair Display",Georgia,serif;font-size:clamp(4rem,10vw,8rem);line-height:.78;letter-spacing:-.075em}
+.newsletter-hero h1{margin:0;color:var(--forest-cream);font-family:"Playfair Display",Georgia,serif;font-size:clamp(3.6rem,7.2vw,6.4rem);line-height:.78;letter-spacing:-.075em}
 .newsletter-hero h1 span{color:var(--forest-moss)}
 .newsletter-intro{max-width:730px;margin:1.4rem 0 0;color:var(--forest-muted)}
 
