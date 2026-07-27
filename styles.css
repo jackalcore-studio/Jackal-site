@@ -458,3 +458,137 @@ body.home-page,
     white-space: normal;
   }
 }
+
+
+/* Secret footer parade */
+.secret-parade {
+  position: relative;
+  height: 112px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(to bottom, transparent, rgba(191, 136, 255, 0.035));
+}
+
+.secret-parade-track {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  display: flex;
+  width: max-content;
+  align-items: end;
+  gap: 0.55rem;
+  padding: 0.6rem 0;
+  animation: creature-waddle 22s linear infinite;
+}
+
+.secret-parade-track:hover {
+  animation-play-state: paused;
+}
+
+.parade-animal {
+  display: inline-block;
+  font-size: 2.8rem;
+  filter: drop-shadow(0 8px 7px rgba(0, 0, 0, 0.3));
+}
+
+.parade-peacock {
+  animation: waddle-left 0.8s ease-in-out infinite alternate;
+}
+
+.parade-monkey {
+  animation: waddle-right 0.72s ease-in-out infinite alternate;
+}
+
+.parade-bee {
+  margin-bottom: 1.45rem;
+  animation: bee-bob 0.9s ease-in-out infinite alternate;
+}
+
+.parade-whisper {
+  align-self: center;
+  margin-left: 0.55rem;
+  color: var(--home-pink);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  text-transform: uppercase;
+  transition: opacity 160ms ease;
+}
+
+.secret-parade-track:hover .parade-whisper,
+.secret-parade-track:focus-visible .parade-whisper {
+  opacity: 1;
+}
+
+.footer-link {
+  color: var(--home-pink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+@keyframes creature-waddle {
+  from {
+    transform: translateX(-13rem);
+  }
+  to {
+    transform: translateX(calc(100vw + 2rem));
+  }
+}
+
+@keyframes waddle-left {
+  from {
+    transform: translateY(0) rotate(-6deg);
+  }
+  to {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+@keyframes waddle-right {
+  from {
+    transform: translateY(-2px) rotate(5deg);
+  }
+  to {
+    transform: translateY(-7px) rotate(-6deg);
+  }
+}
+
+@keyframes bee-bob {
+  from {
+    transform: translateY(0) rotate(-7deg);
+  }
+  to {
+    transform: translateY(-10px) rotate(8deg);
+  }
+}
+
+/* Keep giant JACKALCORE headings alive without letting them eat laptops. */
+@media (max-width: 1400px) and (min-width: 591px) {
+  .display-title {
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+  }
+
+  .creature-title {
+    font-size: clamp(3.4rem, 7vw, 6.2rem);
+  }
+
+  .section-heading h2,
+  .flagship h2 {
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .secret-parade-track,
+  .parade-animal {
+    animation: none;
+  }
+
+  .secret-parade-track {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
